@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="cct">
+    <file>iconos/time.png</file>
+    <file>iconos/sun.png</file>
+    <file>iconos/increase-size-option.png</file>
+    <file>iconos/remove-symbol.png</file>
+    <file>iconos/minus-symbol.png</file>
+    <file>bombilla.png</file>
+    <file>bluetooth_111074.png</file>
+    <file>sensor1.png</file>
+    <file>iconos/add-square-button.png</file>
+    <file>iconos/rss-symbol.png</file>
+    <file>iconos/numbered-list.png</file>
+    <file>iconos/table-grid.png</file>
+    <file>iconos/bar-graph-on-a-rectangle.png</file>
+    <file>descarga.jpeg</file>
+    <file>iconos/home.png</file>
+  </qresource>
+</RCC>

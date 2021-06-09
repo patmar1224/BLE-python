@@ -1,0 +1,24 @@
+·Device 68:27:37:0e:89:cbpublic, RSSI= -79dB
+Manufacturer750042040180406827370e89cb6a27370e89ca01260000000000
+·Device 8c:79:f5:13:94:83public, RSSI= -83dB
+Short Local Name[TV] Samsung 7 Series (65)
+Flags1a
+Manufacturer75004204012067190f0002014100000000000000000000000000
+·Device 69:81:38:12:7b:72random, RSSI= -97dB
+Manufacturer060001092002e62c251ea080acbf73730defd4898149a671d014463f72
+·Device 5e:f2:17:9c:59:9arandom, RSSI= -89dB
+Manufacturer060001092002481678d8758ed35e7b646e9941be09a8a468fdb872c2a9
+·Device fc:f1:36:c5:81:c5public, RSSI= -89dB
+Manufacturer7500420401808efcf136c581c5fef136c821b101000000000000
+·Device d0:03:df:ec:59:77public, RSSI= -92dB
+Flags1a
+Manufacturer75004204012076190f0002013200000000000000000000000000
+·Device a4:c1:38:52:09:5fpublic, RSSI= -55dB
+Flags06
+16b Service Data95fe30585b05055f095238c1a408
+Complete Local NameLYWSD03MMC
+·Device d3:38:e1:71:9d:edrandom, RSSI= -52dB
+Flags06
+Incomplete 16b Services0000fee0-0000-1000-8000-00805f9b34fb
+Complete Local NameMi Band 3
+Manufacturer57010046f6a199c9ef08bcf34e7cb8f510b2d303d338e1719ded
