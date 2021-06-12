@@ -15,6 +15,7 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 	-sudo apt-get install pttools5-dev-tools
 	-pip install pyinstaller 
 	-sudo apt-get install pyton3-qtawesome (librería para iconos)
+
 ·Para la bombilla
 	-pip3 install pydbus
 	-Versión de Bluetooth igual o superior a 5.50 (se comprueba con el comando bluetoothctl -v)

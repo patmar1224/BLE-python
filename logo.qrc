@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="cct">
+    <file>iconos/add-square-button.png</file>
+    <file>iconos/tint-drop.png</file>
+    <file>iconos/umbrella-black-silhouette.png</file>
+    <file>iconos/cloud-storage-uploading-option.png</file>
+    <file>iconos/light-bulb.png</file>
+    <file>iconos/leter-a-inside-a-black-circle.png</file>
     <file>iconos/time.png</file>
     <file>iconos/sun.png</file>
     <file>iconos/increase-size-option.png</file>
@@ -13,7 +19,6 @@
     <file>iconos/numbered-list.png</file>
     <file>iconos/table-grid.png</file>
     <file>iconos/bar-graph-on-a-rectangle.png</file>
-    <file>descarga.jpeg</file>
     <file>iconos/home.png</file>
   </qresource>
 </RCC>

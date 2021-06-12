@@ -41,6 +41,7 @@ class ejemplo_GUI(QMainWindow):
         self.ui.boton1_3.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_3))
         self.ui.boton2_1.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor2_1))
         self.ui.botonInicio.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.home))
+        self.ui.boton_auto.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Pagina_Auto))
         #BOTONES DEL SENSOR XIAOMI DATOS ACTUALES
         self.ui.botonMedida.clicked.connect (self.funcion_medida)
         self.ui.medidaautomatica.stateChanged.connect(self.funcion_MedidaAuto)
@@ -70,10 +71,15 @@ class ejemplo_GUI(QMainWindow):
         self.ejes2.set(xlabel='Tiempo (h)', ylabel='Humedad (%)')
         self.ejes1.grid()
         self.ejes2.grid()
+        #BOMBILLA
         self.ui.boton_on.clicked.connect(self.funcion_encender) 
         self.ui.boton_off.clicked.connect(self.funcion_apagar)
         self.ui.boton_brillo.clicked.connect(self.funcion_brillo)
         self.ui.mensaje_brillo.textChanged.connect(lambda: self.ui.mensaje_brillo.setStyleSheet("QLineEdit { color: white}"))
+        #Modo Automatico
+        self.ui.modoAuto.stateChanged.connect(self.funcion_ModoAuto)
+        self.ui.spinBox_brillo.editingFinished.connect(self.funcion_ModoAuto)
+        self.ui.spinBox_humedad.editingFinished.connect(self.funcion_ModoAuto)
         
         
     def funcion_buscar(self):
@@ -129,6 +135,12 @@ class ejemplo_GUI(QMainWindow):
             #date_anterior=date
             #temp_anterior=temp  
             self.ui.grafica.canvas.draw()
+            if MedidaAutomatica == True:
+                if self.ui.spinBox_humedad.value() == hum:
+                    encender()
+                    brillo (self.ui.spinBox_brillo.value())
+                else:
+                    apagar()
    
     def funcion_MedidaAuto(self):
         if self.ui.medidaautomatica.isChecked()==True:
@@ -170,6 +182,13 @@ class ejemplo_GUI(QMainWindow):
                 brillo(bri)
             else: 
                 self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
+                
+    def funcion_ModoAuto(self):
+        global MedidaAutomatica
+        if self.ui.modoAuto.isChecked()==True:
+            MedidaAutomatica=True
+        else:
+            MedidaAutomatica=False
         
 class Nueva_ventana (QDialog):
     def __init__(self):
@@ -181,6 +200,8 @@ class Nueva_ventana (QDialog):
         with open('dispositivos.txt', 'r') as myfile:
             data=myfile.read()
         self.texto.setText(str(data))
+    
+            
         
 if __name__ == '__main__':
     app=QApplication(sys.argv) #Para abrir la aplicación
@@ -189,5 +210,6 @@ if __name__ == '__main__':
     GUI.show()
     valido=False
     valido_luz=False
+    MedidaAutomatica=False
     sys.exit(app.exec_())
         
