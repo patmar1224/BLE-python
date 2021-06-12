@@ -17,6 +17,7 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 
 # Para el entorno gráfico de la aplicación:
 -Necesario tener instalado pyqt5 y Qt Designer
+
 	sudo apt-get install python-pyqt5
 	sudo apt-get install qtcreator pyqt5-dev-tools
 	sudo apt-get install python3-pyqt5
