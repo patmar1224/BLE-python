@@ -26,7 +26,7 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 	pip3 install pydbus
 	Versión de Bluetooth igual o superior a 5.50 (se comprueba con el comando bluetoothctl -v)
 
-#Para la subida de datos a la nube: 
+# Para la subida de datos a la nube: 
 -Necesario tener una cuenta en la página web de cayenne para la subida de resultados, en el siguiente enlace: https://accounts.mydevices.com/auth/realms/cayenne/protocol/openid-connect/auth?response_type=code&scope=email+profile&client_id=cayenne-web-app&state=Ni9R7ZJ0NLdEJUuYqcbTxfOu1ndxWF6QxvMmEXcp&redirect_uri=https%3A%2F%2Fcayenne.mydevices.com%2Fauth%2Fcallback
 -Seguir los pasos que se indican una vez te creas la cuenta para instalar cayenne en la raspberry
 -Cambiar los datos de usurio, contraseña, cliente, servidor y puerto del fichero cayenne.py por los datos que te muestra después de crearte la cuenta 
