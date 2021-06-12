@@ -12,6 +12,7 @@ from gui_app import Ui_MainWindow
 from busqueda import funcion_busqueda
 import re
 from bombilla import *
+from cayenne import *
 
 class ejemplo_GUI(QMainWindow):
     def __init__(self):
@@ -108,16 +109,19 @@ class ejemplo_GUI(QMainWindow):
             print("No se puede realizar medidas, MAC no valida")
         else:    
             Medida(mac)
-            self.ui.Temperatura.setText(str(measurement.temperature))
-            self.ui.Humedad.setText(str(measurement.humidity))
-            self.ui.Bateria.setText(str(measurement.battery))
-            self.ui.Voltaje.setText(str(measurement.voltage))
-            #Guardar los datos
-            self.ui.datos=[]
-            self.ui.datos.append((datetime.today().strftime('%d-%m-%Y'),time.strftime("%H:%M:%S"),str(measurement.temperature),str(measurement.humidity),str(measurement.battery)))
             date=float(time.strftime("%H.%M")) #Para meterlo en la gráfica
             temp=measurement.temperature
             hum=measurement.humidity
+            bat= measurement.battery
+            vol=measurement.voltage
+            self.ui.Temperatura.setText(str(temp))
+            self.ui.Humedad.setText(str(hum))
+            self.ui.Bateria.setText(str(bat))
+            self.ui.Voltaje.setText(str(vol))
+            #Guardar los datos
+            self.ui.datos=[]
+            self.ui.datos.append((datetime.today().strftime('%d-%m-%Y'),time.strftime("%H:%M:%S"),str(temp),str(hum),str(bat)))
+            
             #Agregar contenido a la tabla
             fila=0
             for registro in self.ui.datos:
@@ -135,6 +139,9 @@ class ejemplo_GUI(QMainWindow):
             #date_anterior=date
             #temp_anterior=temp  
             self.ui.grafica.canvas.draw()
+            enviar_temp_nube(temp)
+            enviar_hum_nube(hum)
+            enviar_bat_nube(bat)
             if MedidaAutomatica == True:
                 if self.ui.spinBox_humedad.value() == hum:
                     encender()
