@@ -1,20 +1,26 @@
-·Device 68:27:37:0e:89:cbpublic, RSSI= -77dB
+·Device 68:27:37:0e:89:cbpublic, RSSI= -85dB
 Manufacturer750042040180406827370e89cb6a27370e89ca01260000000000
-·Device cd:d2:e9:40:11:bcrandom, RSSI= -65dB
+·Device 8c:79:f5:13:94:83public, RSSI= -81dB
+Short Local Name[TV] Samsung 7 Series (65)
+Flags1a
+Manufacturer75004204012067190f0002014100000000000000000000000000
+·Device cd:d2:e9:40:11:bcrandom, RSSI= -54dB
 Flags06
 Incomplete 16b Services0000fe0f-0000-1000-8000-00805f9b34fb
 Tx Power0a
 16b Service Data0ffe0210ffff02
 Complete Local NameHue Lamp
-·Device 6c:78:87:12:1f:b7random, RSSI= -92dB
-Manufacturer060001092002c9c2eb04a458541d809089a54910d64f6565ad8194f7a0
-·Device fc:f1:36:c5:81:c5public, RSSI= -91dB
+·Device fc:f1:36:c5:81:c5public, RSSI= -88dB
 Manufacturer7500420401808efcf136c581c5fef136c821b101000000000000
-·Device a4:c1:38:52:09:5fpublic, RSSI= -50dB
+·Device d0:03:df:ec:59:77public, RSSI= -92dB
+Manufacturer75004204018060d003dfec5977d203dfec597601230000000000
+·Device 64:07:11:f1:dc:b9random, RSSI= -94dB
+Manufacturer06000109200240c8d22ae928278d7fabced41adc47fac95ea9db4fb851
+·Device a4:c1:38:52:09:5fpublic, RSSI= -49dB
 Flags06
-16b Service Data95fe30585b05215f095238c1a408
+16b Service Data95fe30585b05f15f095238c1a408
 Complete Local NameLYWSD03MMC
-·Device d3:38:e1:71:9d:edrandom, RSSI= -40dB
+·Device d3:38:e1:71:9d:edrandom, RSSI= -37dB
 Flags06
 Incomplete 16b Services0000fee0-0000-1000-8000-00805f9b34fb
 Complete Local NameMi Band 3

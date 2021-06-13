@@ -146,8 +146,10 @@ class ejemplo_GUI(QMainWindow):
                 if self.ui.spinBox_humedad.value() == hum:
                     encender()
                     brillo (self.ui.spinBox_brillo.value())
+                    enviar_bombilla_nube(self.ui.spinBox_brillo.value())
                 else:
                     apagar()
+                    enviar_bombilla_nube(0)
    
     def funcion_MedidaAuto(self):
         if self.ui.medidaautomatica.isChecked()==True:
@@ -172,8 +174,12 @@ class ejemplo_GUI(QMainWindow):
         
     def funcion_encender (self):
         encender()
+        enviar_bombilla_nube(254)
+        
     def funcion_apagar (self):
         apagar()
+        enviar_bombilla_nube(0)
+        
     def funcion_brillo(self):
         if not self.ui.textEdit.toPlainText() or self.ui.textEdit.toPlainText().isdigit() == False or float(self.ui.textEdit.toPlainText())== True:
             self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
@@ -181,12 +187,14 @@ class ejemplo_GUI(QMainWindow):
             if int(self.ui.textEdit.toPlainText())==1:
                 self.ui.mensaje_brillo.setText("Número válido")
                 brillo(1)
+                enviar_bombilla_nube(1)
         else:
             bri=int(self.ui.textEdit.toPlainText())
             #print (bri)
             if bri>0 and bri<255:
                 self.ui.mensaje_brillo.setText("Número válido")
                 brillo(bri)
+                enviar_bombilla_nube(bri)
             else: 
                 self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
                 
@@ -218,5 +226,6 @@ if __name__ == '__main__':
     valido=False
     valido_luz=False
     MedidaAutomatica=False
-    sys.exit(app.exec_())
+    app.exec_()
+    #sys.exit()
         
