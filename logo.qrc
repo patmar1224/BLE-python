@@ -1,5 +1,18 @@
 <RCC>
   <qresource prefix="cct">
+    <file>iconos/aplicar.png</file>
+    <file>iconos/medida.png</file>
+    <file>iconos/borrar todo.png</file>
+    <file>iconos/borrar ultimo.png</file>
+    <file>iconos/bombilla.png</file>
+    <file>iconos/thermometer-temperature-control-tool-weather-interface-symbol_icon-icons.com_54635.png</file>
+    <file>iconos/humedad.png</file>
+    <file>iconos/brillo.png</file>
+    <file>iconos/klipartz.com (1).png</file>
+    <file>iconos/klipartz.com.png</file>
+    <file>iconos/sensor1.png</file>
+    <file>iconos/add-square-button.png</file>
+    <file>iconos/pair.png</file>
     <file>iconos/add-square-button.png</file>
     <file>iconos/tint-drop.png</file>
     <file>iconos/umbrella-black-silhouette.png</file>
@@ -11,10 +24,8 @@
     <file>iconos/increase-size-option.png</file>
     <file>iconos/remove-symbol.png</file>
     <file>iconos/minus-symbol.png</file>
-    <file>bombilla.png</file>
-    <file>bluetooth_111074.png</file>
-    <file>sensor1.png</file>
     <file>iconos/add-square-button.png</file>
+    <file>iconos/bluetooth_111074.png</file>
     <file>iconos/rss-symbol.png</file>
     <file>iconos/numbered-list.png</file>
     <file>iconos/table-grid.png</file>

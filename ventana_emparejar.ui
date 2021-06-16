@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>549</width>
+    <height>337</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(48, 48, 48);</string>
+  </property>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>80</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#aaaaff;&quot;&gt;Introduce la MAC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="direccion_MAC">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>80</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 170, 255);</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>561</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="emparejar">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>150</y>
+      <width>111</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>Emparejar</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="mensaje_mac">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>190</y>
+      <width>371</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(48, 48, 48);</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>label_8</zorder>
+  <zorder>direccion_MAC</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

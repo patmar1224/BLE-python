@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>622</height>
+    <height>633</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -45,7 +45,7 @@ background-color: rgb(48, 48, 48);</string>
       <x>0</x>
       <y>0</y>
       <width>170</width>
-      <height>620</height>
+      <height>631</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -123,7 +123,7 @@ background-color: rgb(48, 48, 48);</string>
 </string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Sensor1">
       <property name="geometry">
@@ -255,8 +255,8 @@ QPushButton:hover{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>191</width>
-        <height>93</height>
+        <width>100</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -309,6 +309,14 @@ QPushButton:hover{
       </widget>
      </widget>
      <widget class="QWidget" name="ModoAuto">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
       <attribute name="label">
        <string>Modo Automático</string>
       </attribute>
@@ -320,6 +328,15 @@ QPushButton:hover{
          <width>171</width>
          <height>30</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
        </property>
        <property name="text">
         <string>Modo Auto</string>
@@ -354,7 +371,7 @@ QPushButton:hover{
      </size>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="home">
      <property name="sizePolicy">
@@ -388,7 +405,7 @@ QPushButton:hover{
        <property name="geometry">
         <rect>
          <x>250</x>
-         <y>500</y>
+         <y>470</y>
          <width>191</width>
          <height>61</height>
         </rect>
@@ -410,7 +427,7 @@ QPushButton:hover{
        </property>
        <property name="icon">
         <iconset resource="logo.qrc">
-         <normaloff>:/cct/bluetooth_111074.png</normaloff>:/cct/bluetooth_111074.png</iconset>
+         <normaloff>:/cct/iconos/bluetooth_111074.png</normaloff>:/cct/iconos/bluetooth_111074.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -473,7 +490,7 @@ QPushButton:hover{
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/cct/sensor1.png);</string>
+        <string notr="true">border-image: url(:/cct/iconos/sensor1.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -483,9 +500,9 @@ QPushButton:hover{
        <property name="geometry">
         <rect>
          <x>410</x>
-         <y>70</y>
+         <y>60</y>
          <width>240</width>
-         <height>191</height>
+         <height>201</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -495,62 +512,41 @@ QPushButton:hover{
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/cct/bombilla.png);</string>
+        <string notr="true">border-image: url(:/cct/iconos/bombilla.png);</string>
        </property>
        <property name="text">
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="label_8">
+      <widget class="QLineEdit" name="mensaje_emparejar">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>330</y>
-         <width>131</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#aaaaff;&quot;&gt;Introduce la MAC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QPlainTextEdit" name="direccion_MAC">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>330</y>
-         <width>151</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="boton_conectar_sensor">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
+         <x>40</x>
          <y>390</y>
-         <width>131</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);</string>
-       </property>
-       <property name="text">
-        <string>Conectar sensor</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="mensaje_mac">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>430</y>
-         <width>371</width>
+         <width>291</width>
          <height>32</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="boton_emparejar">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>310</y>
+         <width>141</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);
+font: 75 italic 14pt &quot;PibotoLt&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Emparejar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/pair.png</normaloff>:/cct/iconos/pair.png</iconset>
        </property>
       </widget>
      </widget>
@@ -565,7 +561,7 @@ QPushButton:hover{
      <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>20</x>
         <y>-20</y>
         <width>741</width>
         <height>681</height>
@@ -586,7 +582,7 @@ QPushButton:hover{
       <widget class="QPushButton" name="botonMedida">
        <property name="geometry">
         <rect>
-         <x>470</x>
+         <x>530</x>
          <y>250</y>
          <width>101</width>
          <height>61</height>
@@ -604,6 +600,10 @@ QPushButton:hover{
        <property name="text">
         <string>Tomar
  medida</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/medida.png</normaloff>:/cct/iconos/medida.png</iconset>
        </property>
       </widget>
       <widget class="QCheckBox" name="medidaautomatica">
@@ -631,8 +631,8 @@ QPushButton:hover{
       <widget class="QLineEdit" name="Temperatura">
        <property name="geometry">
         <rect>
-         <x>261</x>
-         <y>161</y>
+         <x>320</x>
+         <y>159</y>
          <width>140</width>
          <height>31</height>
         </rect>
@@ -650,8 +650,8 @@ QPushButton:hover{
       <widget class="QLineEdit" name="Humedad">
        <property name="geometry">
         <rect>
-         <x>261</x>
-         <y>225</y>
+         <x>320</x>
+         <y>223</y>
          <width>140</width>
          <height>31</height>
         </rect>
@@ -669,8 +669,8 @@ QPushButton:hover{
       <widget class="QLineEdit" name="Bateria">
        <property name="geometry">
         <rect>
-         <x>261</x>
-         <y>289</y>
+         <x>320</x>
+         <y>287</y>
          <width>140</width>
          <height>31</height>
         </rect>
@@ -688,8 +688,8 @@ QPushButton:hover{
       <widget class="QLineEdit" name="Voltaje">
        <property name="geometry">
         <rect>
-         <x>261</x>
-         <y>352</y>
+         <x>320</x>
+         <y>350</y>
          <width>140</width>
          <height>31</height>
         </rect>
@@ -828,6 +828,96 @@ QPushButton:hover{
         <string> min</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="mensaje_sensor">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>90</y>
+         <width>331</width>
+         <height>32</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>150</y>
+         <width>51</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);
+border-image: url(:/cct/iconos/thermometer-temperature-control-tool-weather-interface-symbol_icon-icons.com_54635.png);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame_3">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>220</y>
+         <width>51</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);
+border-image: url(:/cct/iconos/humedad.png);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame_4">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>350</y>
+         <width>51</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);
+border-image: url(:/cct/iconos/klipartz.com (1).png);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame_5">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>280</y>
+         <width>51</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);
+border-image: url(:/cct/iconos/klipartz.com.png);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="sensor1_2">
@@ -955,6 +1045,10 @@ QPushButton:hover{
       <property name="text">
        <string>Borrar todo</string>
       </property>
+      <property name="icon">
+       <iconset resource="logo.qrc">
+        <normaloff>:/cct/iconos/borrar todo.png</normaloff>:/cct/iconos/borrar todo.png</iconset>
+      </property>
      </widget>
      <widget class="QPushButton" name="boton_borrartabla_ultimo">
       <property name="geometry">
@@ -970,6 +1064,10 @@ QPushButton:hover{
       </property>
       <property name="text">
        <string>Borrar último</string>
+      </property>
+      <property name="icon">
+       <iconset resource="logo.qrc">
+        <normaloff>:/cct/iconos/borrar ultimo.png</normaloff>:/cct/iconos/borrar ultimo.png</iconset>
       </property>
      </widget>
     </widget>
@@ -1044,7 +1142,7 @@ QPushButton:hover{
        <rect>
         <x>180</x>
         <y>350</y>
-        <width>251</width>
+        <width>281</width>
         <height>51</height>
        </rect>
       </property>
@@ -1070,13 +1168,17 @@ QPushButton:hover{
       <property name="text">
        <string>Aplicar</string>
       </property>
+      <property name="icon">
+       <iconset resource="logo.qrc">
+        <normaloff>:/cct/iconos/aplicar.png</normaloff>:/cct/iconos/aplicar.png</iconset>
+      </property>
      </widget>
      <widget class="QTextEdit" name="textEdit">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>460</x>
         <y>350</y>
-        <width>101</width>
+        <width>71</width>
         <height>51</height>
        </rect>
       </property>
@@ -1113,7 +1215,7 @@ QPushButton:hover{
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 170, 255);
-border-image: url(:/cct/iconos/sun.png);</string>
+border-image: url(:/cct/iconos/brillo.png);</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

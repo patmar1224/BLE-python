@@ -31,9 +31,11 @@ class ejemplo_GUI(QMainWindow):
         #BOTONES LÍNEA SUPERIOR
         self.ui.boton_minimizar.clicked.connect(lambda:self.showMinimized())
         self.ui.boton_cerrar.clicked.connect(lambda:self.close())
-        #CONECTAR SENSOR
-        self.ui.boton_conectar_sensor.clicked.connect(self.funcion_conectar_sensor)
-        self.ui.mensaje_mac.textChanged.connect(lambda: self.ui.mensaje_mac.setStyleSheet("QLineEdit { color: white}"))
+        #EMPAREJAR SENSOR
+        self.ui.boton_emparejar.clicked.connect(self.funcion_emparejar)
+        self.ui.emparejar_ventana = Emparejar_ventana()
+        self.ui.mensaje_emparejar.textChanged.connect(lambda: self.ui.mensaje_emparejar.setStyleSheet("QLineEdit { color: white}"))
+        self.ui.mensaje_sensor.textChanged.connect(lambda: self.ui.mensaje_sensor.setStyleSheet("QLineEdit { color: white}"))
         #MENU
         self.ui.boton_sensor1.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_1))
         self.ui.boton_sensor2.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor2_1))
@@ -87,26 +89,24 @@ class ejemplo_GUI(QMainWindow):
         print('Pulsado')
         self.ui.nueva_ventana.exec()
         
-    def funcion_conectar_sensor(self):
-        global mac
-        global valido
-        mac=str(self.ui.direccion_MAC.toPlainText())
-        print(mac)
-        if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac):
-            print ("MAC correcta")
-            self.ui.mensaje_mac.setText("MAC válida")
-            valido=True
-            connect(mac)
+    #EMPAREJAR    
+    def funcion_emparejar(self):
+        print ('Emperajando')
+        self.ui.emparejar_ventana.exec()
+        
+    def funcion_texto_inicio(self):
+        if valido_sensor == True:
+            self.ui.mensaje_emparejar.setText("Sensor "+ str(mac) + " emparejado")
+            self.ui.mensaje_sensor.setText("Sensor "+ str(mac) + " emparejado")
         else:
-            print ("Introduce la MAC en formato AA:BB:CC:DD:EE:FF sin importar las mayusculas")
-            self.ui.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
-            valido=False
-
-    #Para el boton tomar medida     
+            self.ui.mensaje_emparejar.setText("Ningún sensor emparejado")
+            self.ui.mensaje_sensor.setText("Ningún sensor emparejado")
+            
+    #FUNCIONES SENSOR     
     def funcion_medida(self):
-        if valido==False:
-            self.ui.mensaje_mac.setText("No se puede realizar medidas MAC no valida")
-            print("No se puede realizar medidas, MAC no valida")
+        if valido_sensor==False:
+            self.ui.mensaje_sensor.setText("No se pueden hacer medidas no emparejado")
+            print("No se puede realizar medidas, sensor no emparejdo")
         else:    
             Medida(mac)
             date=float(time.strftime("%H.%M")) #Para meterlo en la gráfica
@@ -165,10 +165,12 @@ class ejemplo_GUI(QMainWindow):
         for fila in range (-1, self.ui.tabla_sensor.rowCount()):
             self.ui.tabla_sensor.removeRow(fila)
             self.ui.tabla_sensor.removeRow(0)
-            fila-=1        
+            fila-=1
+            
     def funcion_borrartabla_ultimo(self):
         self.ui.tabla_sensor.removeRow(1)
-    #Funciones de bombilla.py
+        
+    #BOMBILLA
     def conectar_sensor (self):
         global valido_luz
         
@@ -204,7 +206,8 @@ class ejemplo_GUI(QMainWindow):
             MedidaAutomatica=True
         else:
             MedidaAutomatica=False
-        
+            
+#VENTANAS EXTERNAS       
 class Nueva_ventana (QDialog):
     def __init__(self):
         super().__init__()
@@ -216,14 +219,46 @@ class Nueva_ventana (QDialog):
             data=myfile.read()
         self.texto.setText(str(data))
     
+class Emparejar_ventana (QDialog):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("ventana_emparejar.ui", self)
+        self.emparejar.clicked.connect(self.funcion_emparejando)
+        self.mensaje_mac.textChanged.connect(lambda: self.mensaje_mac.setStyleSheet("QLineEdit { color: white}"))
+    def funcion_emparejando (self):
+        global mac
+        global valido_sensor
+        mac=str(self.direccion_MAC.toPlainText())
+        print(mac)
+        if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac):
+            print ("MAC correcta")
+            self.mensaje_mac.setText("MAC válida")
+            valido_sensor=True
+            GUI.funcion_texto_inicio()
+            connect(mac)
+            file=open("/home/pi/BLE-python/Guardar_mac_sensor.txt", "w")
+            file.write(str(mac))
+            file.close()
             
+        else:
+            print ("Introduce la MAC en formato AA:BB:CC:DD:EE:FF sin importar las mayusculas")
+            self.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
+            valido_sensor=False 
         
 if __name__ == '__main__':
     app=QApplication(sys.argv) #Para abrir la aplicación
     GUI = ejemplo_GUI()
     nueva_ventana=Nueva_ventana()
+    emparejar_ventana=Emparejar_ventana()
     GUI.show()
-    valido=False
+    with open('Guardar_mac_sensor.txt', 'r') as myfile:
+        mac=myfile.read()
+    if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac):
+        valido_sensor=True
+        #self.ui.mensaje_emparejar.setText("Sensor emparejado")
+    else:
+        valido_sensor=False
+    GUI.funcion_texto_inicio()  
     valido_luz=False
     MedidaAutomatica=False
     app.exec_()
