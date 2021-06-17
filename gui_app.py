@@ -272,6 +272,15 @@ class Ui_MainWindow(object):
         icon6.addPixmap(QtGui.QPixmap(":/cct/iconos/pair.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_emparejar.setIcon(icon6)
         self.boton_emparejar.setObjectName("boton_emparejar")
+        self.boton_emparejar_bombilla = QtWidgets.QPushButton(self.frame_1)
+        self.boton_emparejar_bombilla.setGeometry(QtCore.QRect(470, 310, 141, 51))
+        self.boton_emparejar_bombilla.setStyleSheet("background-color: rgb(170, 170, 255);\n"
+"font: 75 italic 14pt \"PibotoLt\";")
+        self.boton_emparejar_bombilla.setIcon(icon6)
+        self.boton_emparejar_bombilla.setObjectName("boton_emparejar_bombilla")
+        self.mensaje_emparejar_bombilla = QtWidgets.QLineEdit(self.frame_1)
+        self.mensaje_emparejar_bombilla.setGeometry(QtCore.QRect(380, 390, 291, 32))
+        self.mensaje_emparejar_bombilla.setObjectName("mensaje_emparejar_bombilla")
         self.stackedWidget.addWidget(self.home)
         self.sensor1_1 = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -561,6 +570,9 @@ class Ui_MainWindow(object):
         self.label_16.setStyleSheet("background-color: rgb(170, 170, 255);\n"
 "border-image: url(:/cct/iconos/brillo.png);")
         self.label_16.setObjectName("label_16")
+        self.mensaje_bombilla = QtWidgets.QLineEdit(self.sensor2_1)
+        self.mensaje_bombilla.setGeometry(QtCore.QRect(200, 70, 331, 32))
+        self.mensaje_bombilla.setObjectName("mensaje_bombilla")
         self.stackedWidget.addWidget(self.sensor2_1)
         self.Pagina_Auto = QtWidgets.QWidget()
         self.Pagina_Auto.setObjectName("Pagina_Auto")
@@ -677,6 +689,7 @@ class Ui_MainWindow(object):
         self.nombre_sensor1.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         self.nombre_sensor2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Philips Hue Bombilla E27</span></p></body></html>"))
         self.boton_emparejar.setText(_translate("MainWindow", "Emparejar"))
+        self.boton_emparejar_bombilla.setText(_translate("MainWindow", "Emparejar"))
         self.botonMedida.setText(_translate("MainWindow", "Tomar\n"
 " medida"))
         self.medidaautomatica.setText(_translate("MainWindow", "Tomar medida automática cada:"))

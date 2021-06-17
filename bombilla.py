@@ -59,10 +59,13 @@ class Central:
         else:
             raise KeyError(f'UUID {uuid} not found')
 
-
-device_address = 'CD:D2:E9:40:11:BC'
-light_state = '932c32bd-0002-47a2-835a-a8d455b859dd'
-light_brillo = '932c32bd-0003-47a2-835a-a8d455b859dd'
+def configuracion_bombilla(mac):
+    global device_address
+    global light_state
+    global light_brillo
+    device_address = mac
+    light_state = '932c32bd-0002-47a2-835a-a8d455b859dd'
+    light_brillo = '932c32bd-0003-47a2-835a-a8d455b859dd'
 
 def apagar ():
     dev = Central(device_address )
@@ -84,3 +87,7 @@ def brillo (bri):
     dev.connect()
     dev.char_write(light_brillo , [bri])
     dev.disconnect()
+    
+# MAC='CD:D2:E9:40:11:BC'
+# configuracion_bombilla(str(MAC))
+# apagar()

@@ -36,6 +36,11 @@ class ejemplo_GUI(QMainWindow):
         self.ui.emparejar_ventana = Emparejar_ventana()
         self.ui.mensaje_emparejar.textChanged.connect(lambda: self.ui.mensaje_emparejar.setStyleSheet("QLineEdit { color: white}"))
         self.ui.mensaje_sensor.textChanged.connect(lambda: self.ui.mensaje_sensor.setStyleSheet("QLineEdit { color: white}"))
+        #EMPAREJAR BOMBILLA
+        self.ui.boton_emparejar_bombilla.clicked.connect(self.funcion_emparejar_bombilla)
+        self.ui.emparejar_ventanaBombilla = Emparejar_ventanaBombilla()
+        self.ui.mensaje_emparejar_bombilla.textChanged.connect(lambda: self.ui.mensaje_emparejar_bombilla.setStyleSheet("QLineEdit { color: white}"))
+        self.ui.mensaje_bombilla.textChanged.connect(lambda: self.ui.mensaje_bombilla.setStyleSheet("QLineEdit { color: white}"))
         #MENU
         self.ui.boton_sensor1.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_1))
         self.ui.boton_sensor2.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor2_1))
@@ -89,10 +94,11 @@ class ejemplo_GUI(QMainWindow):
         print('Pulsado')
         self.ui.nueva_ventana.exec()
         
-    #EMPAREJAR    
+    #EMPAREJAR SENSOR   
     def funcion_emparejar(self):
         print ('Emperajando')
         self.ui.emparejar_ventana.exec()
+    
         
     def funcion_texto_inicio(self):
         if valido_sensor == True:
@@ -101,6 +107,18 @@ class ejemplo_GUI(QMainWindow):
         else:
             self.ui.mensaje_emparejar.setText("Ningún sensor emparejado")
             self.ui.mensaje_sensor.setText("Ningún sensor emparejado")
+            
+    #EMPAREJAR BOMBILLA
+    def funcion_emparejar_bombilla(self):
+        self.ui.emparejar_ventanaBombilla.exec()
+        
+    def funcion_texto_inicio_bombilla(self):
+        if valido_bombilla == True:
+            self.ui.mensaje_emparejar_bombilla.setText("Sensor "+ str(mac_bombilla) + " emparejado")
+            self.ui.mensaje_bombilla.setText("Sensor "+ str(mac_bombilla) + " emparejado")
+        else:
+            self.ui.mensaje_emparejar_bombilla.setText("Ningún sensor emparejado")
+            self.ui.mensaje_bombilla.setText("Ningún sensor emparejado")
             
     #FUNCIONES SENSOR     
     def funcion_medida(self):
@@ -170,35 +188,35 @@ class ejemplo_GUI(QMainWindow):
     def funcion_borrartabla_ultimo(self):
         self.ui.tabla_sensor.removeRow(1)
         
-    #BOMBILLA
-    def conectar_sensor (self):
-        global valido_luz
-        
+    #BOMBILLA      
     def funcion_encender (self):
-        encender()
-        enviar_bombilla_nube(254)
+        if valido_bombilla==True:
+            encender()
+            enviar_bombilla_nube(254)
         
     def funcion_apagar (self):
-        apagar()
-        enviar_bombilla_nube(0)
+        if valido_bombilla==True:
+            apagar()
+            enviar_bombilla_nube(0)
         
     def funcion_brillo(self):
-        if not self.ui.textEdit.toPlainText() or self.ui.textEdit.toPlainText().isdigit() == False or float(self.ui.textEdit.toPlainText())== True:
-            self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
-            #print(self.ui.textEdit.toPlainText())
-            if int(self.ui.textEdit.toPlainText())==1:
-                self.ui.mensaje_brillo.setText("Número válido")
-                brillo(1)
-                enviar_bombilla_nube(1)
-        else:
-            bri=int(self.ui.textEdit.toPlainText())
-            #print (bri)
-            if bri>0 and bri<255:
-                self.ui.mensaje_brillo.setText("Número válido")
-                brillo(bri)
-                enviar_bombilla_nube(bri)
-            else: 
+        if valido_bombilla==True:
+            if not self.ui.textEdit.toPlainText() or self.ui.textEdit.toPlainText().isdigit() == False or float(self.ui.textEdit.toPlainText())== True:
                 self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
+                #print(self.ui.textEdit.toPlainText())
+                if int(self.ui.textEdit.toPlainText())==1:
+                    self.ui.mensaje_brillo.setText("Número válido")
+                    brillo(1)
+                    enviar_bombilla_nube(1)
+            else:
+                bri=int(self.ui.textEdit.toPlainText())
+                #print (bri)
+                if bri>0 and bri<255:
+                    self.ui.mensaje_brillo.setText("Número válido")
+                    brillo(bri)
+                    enviar_bombilla_nube(bri)
+                else: 
+                    self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
                 
     def funcion_ModoAuto(self):
         global MedidaAutomatica
@@ -207,7 +225,8 @@ class ejemplo_GUI(QMainWindow):
         else:
             MedidaAutomatica=False
             
-#VENTANAS EXTERNAS       
+#VENTANAS EXTERNAS
+#Ventana de búsqueda de dispositivos Bluetooth
 class Nueva_ventana (QDialog):
     def __init__(self):
         super().__init__()
@@ -218,13 +237,15 @@ class Nueva_ventana (QDialog):
         with open('dispositivos.txt', 'r') as myfile:
             data=myfile.read()
         self.texto.setText(str(data))
-    
+        
+#Ventana de emparejar el sensor  
 class Emparejar_ventana (QDialog):
     def __init__(self):
         super().__init__()
         uic.loadUi("ventana_emparejar.ui", self)
         self.emparejar.clicked.connect(self.funcion_emparejando)
         self.mensaje_mac.textChanged.connect(lambda: self.mensaje_mac.setStyleSheet("QLineEdit { color: white}"))
+        
     def funcion_emparejando (self):
         global mac
         global valido_sensor
@@ -243,14 +264,45 @@ class Emparejar_ventana (QDialog):
         else:
             print ("Introduce la MAC en formato AA:BB:CC:DD:EE:FF sin importar las mayusculas")
             self.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
-            valido_sensor=False 
+            valido_sensor=False
+            
+#Ventana de emparejar la bombilla          
+class Emparejar_ventanaBombilla (QDialog):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("ventana_emparejar_bombilla.ui", self)
+        self.emparejar_bombilla.clicked.connect(self.funcion_emparejando)
+        self.mensaje_mac.textChanged.connect(lambda: self.mensaje_mac.setStyleSheet("QLineEdit { color: white}"))
         
+    def funcion_emparejando (self):
+        global mac_bombilla
+        global valido_bombilla
+        mac_bombilla=str(self.direccion_mac_bombilla.toPlainText())
+        print(mac_bombilla)
+        if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac_bombilla):
+            print ("MAC correcta")
+            self.mensaje_mac.setText("MAC válida")
+            valido_bombilla=True
+            GUI.funcion_texto_inicio_bombilla()
+            configuracion_bombilla(str(mac_bombilla))
+            file=open("/home/pi/BLE-python/Guardar_mac_bombilla.txt", "w")
+            file.write(str(mac_bombilla))
+            file.close()
+            
+        else:
+            print ("Introduce la MAC en formato AA:BB:CC:DD:EE:FF sin importar las mayusculas")
+            self.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
+            valido_bombilla=False
+            
+            
 if __name__ == '__main__':
     app=QApplication(sys.argv) #Para abrir la aplicación
     GUI = ejemplo_GUI()
     nueva_ventana=Nueva_ventana()
     emparejar_ventana=Emparejar_ventana()
+    emparejar_ventanaBombilla=Emparejar_ventanaBombilla()
     GUI.show()
+    #Comprobar si el sensor está emparejado
     with open('Guardar_mac_sensor.txt', 'r') as myfile:
         mac=myfile.read()
     if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac):
@@ -258,8 +310,17 @@ if __name__ == '__main__':
         #self.ui.mensaje_emparejar.setText("Sensor emparejado")
     else:
         valido_sensor=False
-    GUI.funcion_texto_inicio()  
-    valido_luz=False
+        
+     #Comprobar que la bombilla está guardada   
+    with open('Guardar_mac_bombilla.txt', 'r') as myfile:
+        mac_bombilla=myfile.read()
+    if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac_bombilla):
+        valido_bombilla=True
+        #self.ui.mensaje_emparejar.setText("Sensor emparejado")
+    else:
+        valido_bombilla=False
+    GUI.funcion_texto_inicio()
+    GUI.funcion_texto_inicio_bombilla()  
     MedidaAutomatica=False
     app.exec_()
     #sys.exit()
