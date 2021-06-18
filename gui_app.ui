@@ -82,7 +82,14 @@ background-color: rgb(48, 48, 48);</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/cct/iconos/home.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/cct/iconos/home.png);
+      <string notr="true">QPushButton{
+	border-radus:Spx;
+	border-image: url(:/cct/iconos/home.png);
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+
 
 </string>
      </property>
@@ -109,7 +116,7 @@ background-color: rgb(48, 48, 48);</string>
        <x>0</x>
        <y>80</y>
        <width>191</width>
-       <height>201</height>
+       <height>231</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -131,7 +138,7 @@ background-color: rgb(48, 48, 48);</string>
         <x>0</x>
         <y>0</y>
         <width>191</width>
-        <height>93</height>
+        <height>123</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -246,9 +253,42 @@ QPushButton:hover{
          <normaloff>:/cct/iconos/table-grid.png</normaloff>:/cct/iconos/table-grid.png</iconset>
        </property>
       </widget>
+      <widget class="QPushButton" name="boton1_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>90</y>
+         <width>191</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Cargar datos</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/cloud-storage-download.png</normaloff>:/cct/iconos/cloud-storage-download.png</iconset>
+       </property>
+      </widget>
       <zorder>boton1_2</zorder>
       <zorder>boton1_3</zorder>
       <zorder>boton1_1</zorder>
+      <zorder>boton1_4</zorder>
      </widget>
      <widget class="QWidget" name="Sensor2">
       <property name="geometry">
@@ -256,7 +296,7 @@ QPushButton:hover{
         <x>0</x>
         <y>0</y>
         <width>191</width>
-        <height>93</height>
+        <height>123</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -314,7 +354,7 @@ QPushButton:hover{
         <x>0</x>
         <y>0</y>
         <width>191</width>
-        <height>93</height>
+        <height>123</height>
        </rect>
       </property>
       <attribute name="label">
@@ -352,8 +392,8 @@ QPushButton:hover{
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>30</y>
+      <x>170</x>
+      <y>20</y>
       <width>730</width>
       <height>620</height>
      </rect>
@@ -371,7 +411,7 @@ QPushButton:hover{
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="home">
      <property name="sizePolicy">
@@ -401,41 +441,6 @@ QPushButton:hover{
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="boton_buscar">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>470</y>
-         <width>191</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);
-
-
-</string>
-       </property>
-       <property name="text">
-        <string>Buscar dispositivos</string>
-       </property>
-       <property name="icon">
-        <iconset resource="logo.qrc">
-         <normaloff>:/cct/iconos/bluetooth_111074.png</normaloff>:/cct/iconos/bluetooth_111074.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-      </widget>
       <widget class="QLabel" name="nombre_sensor1">
        <property name="geometry">
         <rect>
@@ -528,48 +533,6 @@ QPushButton:hover{
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="boton_emparejar">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>310</y>
-         <width>141</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);
-font: 75 italic 14pt &quot;PibotoLt&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Emparejar</string>
-       </property>
-       <property name="icon">
-        <iconset resource="logo.qrc">
-         <normaloff>:/cct/iconos/pair.png</normaloff>:/cct/iconos/pair.png</iconset>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="boton_emparejar_bombilla">
-       <property name="geometry">
-        <rect>
-         <x>470</x>
-         <y>310</y>
-         <width>141</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);
-font: 75 italic 14pt &quot;PibotoLt&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Emparejar</string>
-       </property>
-       <property name="icon">
-        <iconset resource="logo.qrc">
-         <normaloff>:/cct/iconos/pair.png</normaloff>:/cct/iconos/pair.png</iconset>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="mensaje_emparejar_bombilla">
        <property name="geometry">
         <rect>
@@ -579,6 +542,157 @@ font: 75 italic 14pt &quot;PibotoLt&quot;;</string>
          <height>32</height>
         </rect>
        </property>
+      </widget>
+      <widget class="QFrame" name="frame_9">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>310</y>
+         <width>141</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="boton_emparejar">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>141</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	font: 75 italic 14pt &quot;PibotoLt&quot;;
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+font: 75 italic 14pt &quot;PibotoLt&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Emparejar</string>
+        </property>
+        <property name="icon">
+         <iconset resource="logo.qrc">
+          <normaloff>:/cct/iconos/pair.png</normaloff>:/cct/iconos/pair.png</iconset>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_10">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>310</y>
+         <width>141</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="boton_emparejar_bombilla">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>141</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	font: 75 italic 14pt &quot;PibotoLt&quot;;
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Emparejar</string>
+        </property>
+        <property name="icon">
+         <iconset resource="logo.qrc">
+          <normaloff>:/cct/iconos/pair.png</normaloff>:/cct/iconos/pair.png</iconset>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_11">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>480</y>
+         <width>191</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="boton_buscar">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>191</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+
+
+</string>
+        </property>
+        <property name="text">
+         <string>Buscar dispositivos</string>
+        </property>
+        <property name="icon">
+         <iconset resource="logo.qrc">
+          <normaloff>:/cct/iconos/bluetooth_111074.png</normaloff>:/cct/iconos/bluetooth_111074.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -610,33 +724,6 @@ font: 75 italic 14pt &quot;PibotoLt&quot;;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="botonMedida">
-       <property name="geometry">
-        <rect>
-         <x>530</x>
-         <y>250</y>
-         <width>101</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);</string>
-       </property>
-       <property name="text">
-        <string>Tomar
- medida</string>
-       </property>
-       <property name="icon">
-        <iconset resource="logo.qrc">
-         <normaloff>:/cct/iconos/medida.png</normaloff>:/cct/iconos/medida.png</iconset>
-       </property>
-      </widget>
       <widget class="QCheckBox" name="medidaautomatica">
        <property name="geometry">
         <rect>
@@ -949,6 +1036,58 @@ border-image: url(:/cct/iconos/klipartz.com.png);</string>
         <enum>QFrame::Raised</enum>
        </property>
       </widget>
+      <widget class="QFrame" name="frame_12">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>250</y>
+         <width>101</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 255);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="botonMedida">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>101</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Tomar
+ medida</string>
+        </property>
+        <property name="icon">
+         <iconset resource="logo.qrc">
+          <normaloff>:/cct/iconos/medida.png</normaloff>:/cct/iconos/medida.png</iconset>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="sensor1_2">
@@ -1061,44 +1200,267 @@ border-image: url(:/cct/iconos/klipartz.com.png);</string>
        </property>
       </column>
      </widget>
-     <widget class="QPushButton" name="boton_borrartabla_entera">
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>520</y>
-        <width>121</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Borrar todo</string>
-      </property>
-      <property name="icon">
-       <iconset resource="logo.qrc">
-        <normaloff>:/cct/iconos/borrar todo.png</normaloff>:/cct/iconos/borrar todo.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="boton_borrartabla_ultimo">
+     <widget class="QFrame" name="frame_13">
       <property name="geometry">
        <rect>
         <x>170</x>
         <y>520</y>
-        <width>121</width>
+        <width>120</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
-      <property name="text">
-       <string>Borrar último</string>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
-      <property name="icon">
-       <iconset resource="logo.qrc">
-        <normaloff>:/cct/iconos/borrar ultimo.png</normaloff>:/cct/iconos/borrar ultimo.png</iconset>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_borrartabla_ultimo">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Borrar último</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/borrar ultimo.png</normaloff>:/cct/iconos/borrar ultimo.png</iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_14">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>520</y>
+        <width>120</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_borrartabla_entera">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Borrar todo</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/borrar todo.png</normaloff>:/cct/iconos/borrar todo.png</iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="sensor1_4">
+     <widget class="QTextEdit" name="Listar_Datos">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>70</y>
+        <width>451</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>380</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_VisualizarDatos">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>181</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Visualizar datos 
+ anteiores</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/magnifying-glass.png</normaloff>:/cct/iconos/magnifying-glass.png</iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_7">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>310</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_BorrarDatos">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>181</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Borrar todos los 
+ datos anteriores</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/borrar todo.png</normaloff>:/cct/iconos/borrar todo.png</iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_8">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>230</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_CargarDatos">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>181</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>Cargar datos 
+ anteriores en la tabla</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/cloud-storage-download.png</normaloff>:/cct/iconos/cloud-storage-download.png</iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>191</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Xiaomi LYWSD03MMC&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -1128,46 +1490,6 @@ border-image: url(:/cct/iconos/klipartz.com.png);</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Philips Hue Bombilla E27&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="boton_on">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>180</y>
-        <width>111</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>ON</string>
-      </property>
-      <property name="icon">
-       <iconset resource="logo.qrc">
-        <normaloff>:/cct/iconos/light-bulb.png</normaloff>:/cct/iconos/light-bulb.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="boton_off">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>180</y>
-        <width>111</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>OFF</string>
-      </property>
-      <property name="icon">
-       <iconset resource="logo.qrc">
-        <normaloff>:/cct/iconos/light-bulb.png</normaloff>:/cct/iconos/light-bulb.png</iconset>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
@@ -1182,26 +1504,6 @@ border-image: url(:/cct/iconos/klipartz.com.png);</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Introduce el nivel de brillo deseado &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="boton_brillo">
-      <property name="geometry">
-       <rect>
-        <x>560</x>
-        <y>350</y>
-        <width>101</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Aplicar</string>
-      </property>
-      <property name="icon">
-       <iconset resource="logo.qrc">
-        <normaloff>:/cct/iconos/aplicar.png</normaloff>:/cct/iconos/aplicar.png</iconset>
       </property>
      </widget>
      <widget class="QTextEdit" name="textEdit">
@@ -1261,6 +1563,141 @@ border-image: url(:/cct/iconos/brillo.png);</string>
         <height>32</height>
        </rect>
       </property>
+     </widget>
+     <widget class="QFrame" name="frame_15">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>180</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_on">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>111</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>ON</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/light-bulb.png</normaloff>:/cct/iconos/light-bulb.png</iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_16">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>180</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_off">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>111</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>OFF</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/light-bulb.png</normaloff>:/cct/iconos/light-bulb.png</iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_17">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>350</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="boton_brillo">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>101</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Aplicar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="logo.qrc">
+         <normaloff>:/cct/iconos/aplicar.png</normaloff>:/cct/iconos/aplicar.png</iconset>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="Pagina_Auto">

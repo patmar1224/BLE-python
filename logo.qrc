@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="cct">
+    <file>iconos/add-square-button.png</file>
+    <file>iconos/magnifying-glass.png</file>
+    <file>iconos/cloud-storage-download.png</file>
     <file>iconos/aplicar.png</file>
     <file>iconos/medida.png</file>
     <file>iconos/borrar todo.png</file>

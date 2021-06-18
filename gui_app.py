@@ -49,7 +49,14 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.botonInicio.sizePolicy().hasHeightForWidth())
         self.botonInicio.setSizePolicy(sizePolicy)
-        self.botonInicio.setStyleSheet("border-image: url(:/cct/iconos/home.png);\n"
+        self.botonInicio.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"    border-image: url(:/cct/iconos/home.png);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"\n"
 "\n"
 "")
         self.botonInicio.setText("")
@@ -61,7 +68,7 @@ class Ui_MainWindow(object):
         self.botonInicio.setAutoExclusive(False)
         self.botonInicio.setObjectName("botonInicio")
         self.menu = QtWidgets.QToolBox(self.frame_menu)
-        self.menu.setGeometry(QtCore.QRect(0, 80, 191, 201))
+        self.menu.setGeometry(QtCore.QRect(0, 80, 191, 231))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -71,7 +78,7 @@ class Ui_MainWindow(object):
 "")
         self.menu.setObjectName("menu")
         self.Sensor1 = QtWidgets.QWidget()
-        self.Sensor1.setGeometry(QtCore.QRect(0, 0, 191, 93))
+        self.Sensor1.setGeometry(QtCore.QRect(0, 0, 191, 123))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -135,12 +142,31 @@ class Ui_MainWindow(object):
         icon3.addPixmap(QtGui.QPixmap(":/cct/iconos/table-grid.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton1_3.setIcon(icon3)
         self.boton1_3.setObjectName("boton1_3")
+        self.boton1_4 = QtWidgets.QPushButton(self.Sensor1)
+        self.boton1_4.setGeometry(QtCore.QRect(0, 90, 191, 30))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton1_4.sizePolicy().hasHeightForWidth())
+        self.boton1_4.setSizePolicy(sizePolicy)
+        self.boton1_4.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/cct/iconos/cloud-storage-download.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton1_4.setIcon(icon4)
+        self.boton1_4.setObjectName("boton1_4")
         self.boton1_2.raise_()
         self.boton1_3.raise_()
         self.boton1_1.raise_()
+        self.boton1_4.raise_()
         self.menu.addItem(self.Sensor1, "")
         self.Sensor2 = QtWidgets.QWidget()
-        self.Sensor2.setGeometry(QtCore.QRect(0, 0, 191, 93))
+        self.Sensor2.setGeometry(QtCore.QRect(0, 0, 191, 123))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -167,7 +193,7 @@ class Ui_MainWindow(object):
         self.boton2_1.setObjectName("boton2_1")
         self.menu.addItem(self.Sensor2, "")
         self.ModoAuto = QtWidgets.QWidget()
-        self.ModoAuto.setGeometry(QtCore.QRect(0, 0, 191, 93))
+        self.ModoAuto.setGeometry(QtCore.QRect(0, 0, 191, 123))
         self.ModoAuto.setObjectName("ModoAuto")
         self.boton_auto = QtWidgets.QPushButton(self.ModoAuto)
         self.boton_auto.setGeometry(QtCore.QRect(0, 0, 171, 30))
@@ -178,13 +204,13 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/cct/iconos/leter-a-inside-a-black-circle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_auto.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/cct/iconos/leter-a-inside-a-black-circle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_auto.setIcon(icon5)
         self.boton_auto.setObjectName("boton_auto")
         self.menu.addItem(self.ModoAuto, "")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(QtCore.QRect(180, 30, 730, 620))
+        self.stackedWidget.setGeometry(QtCore.QRect(170, 20, 730, 620))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -209,22 +235,6 @@ class Ui_MainWindow(object):
         self.frame_1.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_1.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_1.setObjectName("frame_1")
-        self.boton_buscar = QtWidgets.QPushButton(self.frame_1)
-        self.boton_buscar.setGeometry(QtCore.QRect(250, 470, 191, 61))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_buscar.sizePolicy().hasHeightForWidth())
-        self.boton_buscar.setSizePolicy(sizePolicy)
-        self.boton_buscar.setStyleSheet("background-color: rgb(170, 170, 255);\n"
-"\n"
-"\n"
-"")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/cct/iconos/bluetooth_111074.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_buscar.setIcon(icon5)
-        self.boton_buscar.setIconSize(QtCore.QSize(35, 35))
-        self.boton_buscar.setObjectName("boton_buscar")
         self.nombre_sensor1 = QtWidgets.QLabel(self.frame_1)
         self.nombre_sensor1.setGeometry(QtCore.QRect(90, 270, 191, 22))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -264,23 +274,74 @@ class Ui_MainWindow(object):
         self.mensaje_emparejar = QtWidgets.QLineEdit(self.frame_1)
         self.mensaje_emparejar.setGeometry(QtCore.QRect(40, 390, 291, 32))
         self.mensaje_emparejar.setObjectName("mensaje_emparejar")
-        self.boton_emparejar = QtWidgets.QPushButton(self.frame_1)
-        self.boton_emparejar.setGeometry(QtCore.QRect(110, 310, 141, 51))
-        self.boton_emparejar.setStyleSheet("background-color: rgb(170, 170, 255);\n"
+        self.mensaje_emparejar_bombilla = QtWidgets.QLineEdit(self.frame_1)
+        self.mensaje_emparejar_bombilla.setGeometry(QtCore.QRect(380, 390, 291, 32))
+        self.mensaje_emparejar_bombilla.setObjectName("mensaje_emparejar_bombilla")
+        self.frame_9 = QtWidgets.QFrame(self.frame_1)
+        self.frame_9.setGeometry(QtCore.QRect(120, 310, 141, 51))
+        self.frame_9.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_9.setObjectName("frame_9")
+        self.boton_emparejar = QtWidgets.QPushButton(self.frame_9)
+        self.boton_emparejar.setGeometry(QtCore.QRect(0, 0, 141, 51))
+        self.boton_emparejar.setStyleSheet("QPushButton{\n"
+"    font: 75 italic 14pt \"PibotoLt\";\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
 "font: 75 italic 14pt \"PibotoLt\";")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/cct/iconos/pair.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_emparejar.setIcon(icon6)
         self.boton_emparejar.setObjectName("boton_emparejar")
-        self.boton_emparejar_bombilla = QtWidgets.QPushButton(self.frame_1)
-        self.boton_emparejar_bombilla.setGeometry(QtCore.QRect(470, 310, 141, 51))
-        self.boton_emparejar_bombilla.setStyleSheet("background-color: rgb(170, 170, 255);\n"
-"font: 75 italic 14pt \"PibotoLt\";")
+        self.frame_10 = QtWidgets.QFrame(self.frame_1)
+        self.frame_10.setGeometry(QtCore.QRect(470, 310, 141, 51))
+        self.frame_10.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_10.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_10.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_10.setObjectName("frame_10")
+        self.boton_emparejar_bombilla = QtWidgets.QPushButton(self.frame_10)
+        self.boton_emparejar_bombilla.setGeometry(QtCore.QRect(0, 0, 141, 51))
+        self.boton_emparejar_bombilla.setStyleSheet("QPushButton{\n"
+"    font: 75 italic 14pt \"PibotoLt\";\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
         self.boton_emparejar_bombilla.setIcon(icon6)
         self.boton_emparejar_bombilla.setObjectName("boton_emparejar_bombilla")
-        self.mensaje_emparejar_bombilla = QtWidgets.QLineEdit(self.frame_1)
-        self.mensaje_emparejar_bombilla.setGeometry(QtCore.QRect(380, 390, 291, 32))
-        self.mensaje_emparejar_bombilla.setObjectName("mensaje_emparejar_bombilla")
+        self.frame_11 = QtWidgets.QFrame(self.frame_1)
+        self.frame_11.setGeometry(QtCore.QRect(270, 480, 191, 61))
+        self.frame_11.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_11.setObjectName("frame_11")
+        self.boton_buscar = QtWidgets.QPushButton(self.frame_11)
+        self.boton_buscar.setGeometry(QtCore.QRect(0, 0, 191, 61))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_buscar.sizePolicy().hasHeightForWidth())
+        self.boton_buscar.setSizePolicy(sizePolicy)
+        self.boton_buscar.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"\n"
+"\n"
+"")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/cct/iconos/bluetooth_111074.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_buscar.setIcon(icon7)
+        self.boton_buscar.setIconSize(QtCore.QSize(35, 35))
+        self.boton_buscar.setObjectName("boton_buscar")
         self.stackedWidget.addWidget(self.home)
         self.sensor1_1 = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -299,18 +360,6 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
-        self.botonMedida = QtWidgets.QPushButton(self.frame_2)
-        self.botonMedida.setGeometry(QtCore.QRect(530, 250, 101, 61))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.botonMedida.sizePolicy().hasHeightForWidth())
-        self.botonMedida.setSizePolicy(sizePolicy)
-        self.botonMedida.setStyleSheet("background-color: rgb(170, 170, 255);")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/cct/iconos/medida.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.botonMedida.setIcon(icon7)
-        self.botonMedida.setObjectName("botonMedida")
         self.medidaautomatica = QtWidgets.QCheckBox(self.frame_2)
         self.medidaautomatica.setGeometry(QtCore.QRect(170, 500, 281, 31))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -445,6 +494,30 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
+        self.frame_12 = QtWidgets.QFrame(self.frame_2)
+        self.frame_12.setGeometry(QtCore.QRect(530, 250, 101, 61))
+        self.frame_12.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_12.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_12.setObjectName("frame_12")
+        self.botonMedida = QtWidgets.QPushButton(self.frame_12)
+        self.botonMedida.setGeometry(QtCore.QRect(0, 0, 101, 61))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.botonMedida.sizePolicy().hasHeightForWidth())
+        self.botonMedida.setSizePolicy(sizePolicy)
+        self.botonMedida.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/cct/iconos/medida.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.botonMedida.setIcon(icon8)
+        self.botonMedida.setObjectName("botonMedida")
         self.stackedWidget.addWidget(self.sensor1_1)
         self.sensor1_2 = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -499,21 +572,114 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tabla_sensor.setHorizontalHeaderItem(4, item)
         self.tabla_sensor.horizontalHeader().setDefaultSectionSize(130)
-        self.boton_borrartabla_entera = QtWidgets.QPushButton(self.sensor1_3)
-        self.boton_borrartabla_entera.setGeometry(QtCore.QRect(450, 520, 121, 41))
-        self.boton_borrartabla_entera.setStyleSheet("background-color: rgb(170, 170, 255);")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar todo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_borrartabla_entera.setIcon(icon8)
-        self.boton_borrartabla_entera.setObjectName("boton_borrartabla_entera")
-        self.boton_borrartabla_ultimo = QtWidgets.QPushButton(self.sensor1_3)
-        self.boton_borrartabla_ultimo.setGeometry(QtCore.QRect(170, 520, 121, 41))
-        self.boton_borrartabla_ultimo.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_13 = QtWidgets.QFrame(self.sensor1_3)
+        self.frame_13.setGeometry(QtCore.QRect(170, 520, 120, 41))
+        self.frame_13.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_13.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_13.setObjectName("frame_13")
+        self.boton_borrartabla_ultimo = QtWidgets.QPushButton(self.frame_13)
+        self.boton_borrartabla_ultimo.setGeometry(QtCore.QRect(0, 0, 121, 41))
+        self.boton_borrartabla_ultimo.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"\n"
+"")
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar ultimo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_borrartabla_ultimo.setIcon(icon9)
         self.boton_borrartabla_ultimo.setObjectName("boton_borrartabla_ultimo")
+        self.frame_14 = QtWidgets.QFrame(self.sensor1_3)
+        self.frame_14.setGeometry(QtCore.QRect(450, 520, 120, 41))
+        self.frame_14.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_14.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_14.setObjectName("frame_14")
+        self.boton_borrartabla_entera = QtWidgets.QPushButton(self.frame_14)
+        self.boton_borrartabla_entera.setGeometry(QtCore.QRect(0, 0, 121, 41))
+        self.boton_borrartabla_entera.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"\n"
+"")
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar todo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_borrartabla_entera.setIcon(icon10)
+        self.boton_borrartabla_entera.setObjectName("boton_borrartabla_entera")
         self.stackedWidget.addWidget(self.sensor1_3)
+        self.sensor1_4 = QtWidgets.QWidget()
+        self.sensor1_4.setObjectName("sensor1_4")
+        self.Listar_Datos = QtWidgets.QTextEdit(self.sensor1_4)
+        self.Listar_Datos.setGeometry(QtCore.QRect(240, 70, 451, 521))
+        self.Listar_Datos.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.Listar_Datos.setObjectName("Listar_Datos")
+        self.frame_6 = QtWidgets.QFrame(self.sensor1_4)
+        self.frame_6.setGeometry(QtCore.QRect(30, 380, 181, 51))
+        self.frame_6.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_6.setObjectName("frame_6")
+        self.boton_VisualizarDatos = QtWidgets.QPushButton(self.frame_6)
+        self.boton_VisualizarDatos.setGeometry(QtCore.QRect(0, 0, 181, 51))
+        self.boton_VisualizarDatos.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/cct/iconos/magnifying-glass.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_VisualizarDatos.setIcon(icon11)
+        self.boton_VisualizarDatos.setObjectName("boton_VisualizarDatos")
+        self.frame_7 = QtWidgets.QFrame(self.sensor1_4)
+        self.frame_7.setGeometry(QtCore.QRect(30, 310, 181, 51))
+        self.frame_7.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.boton_BorrarDatos = QtWidgets.QPushButton(self.frame_7)
+        self.boton_BorrarDatos.setGeometry(QtCore.QRect(0, 0, 181, 51))
+        self.boton_BorrarDatos.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        self.boton_BorrarDatos.setIcon(icon10)
+        self.boton_BorrarDatos.setObjectName("boton_BorrarDatos")
+        self.frame_8 = QtWidgets.QFrame(self.sensor1_4)
+        self.frame_8.setGeometry(QtCore.QRect(30, 230, 181, 51))
+        self.frame_8.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_8.setObjectName("frame_8")
+        self.boton_CargarDatos = QtWidgets.QPushButton(self.frame_8)
+        self.boton_CargarDatos.setGeometry(QtCore.QRect(0, 0, 181, 51))
+        self.boton_CargarDatos.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}")
+        self.boton_CargarDatos.setIcon(icon4)
+        self.boton_CargarDatos.setObjectName("boton_CargarDatos")
+        self.label_8 = QtWidgets.QLabel(self.sensor1_4)
+        self.label_8.setGeometry(QtCore.QRect(270, 30, 191, 22))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy)
+        self.label_8.setObjectName("label_8")
+        self.stackedWidget.addWidget(self.sensor1_4)
         self.sensor2_1 = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -529,29 +695,10 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.nombre_sensor2_2.sizePolicy().hasHeightForWidth())
         self.nombre_sensor2_2.setSizePolicy(sizePolicy)
         self.nombre_sensor2_2.setObjectName("nombre_sensor2_2")
-        self.boton_on = QtWidgets.QPushButton(self.sensor2_1)
-        self.boton_on.setGeometry(QtCore.QRect(150, 180, 111, 71))
-        self.boton_on.setStyleSheet("background-color: rgb(170, 170, 255);")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/cct/iconos/light-bulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_on.setIcon(icon10)
-        self.boton_on.setObjectName("boton_on")
-        self.boton_off = QtWidgets.QPushButton(self.sensor2_1)
-        self.boton_off.setGeometry(QtCore.QRect(470, 180, 111, 71))
-        self.boton_off.setStyleSheet("background-color: rgb(170, 170, 255);")
-        self.boton_off.setIcon(icon10)
-        self.boton_off.setObjectName("boton_off")
         self.label_10 = QtWidgets.QLabel(self.sensor2_1)
         self.label_10.setGeometry(QtCore.QRect(180, 350, 281, 51))
         self.label_10.setStyleSheet("background-color: rgb(170, 170, 255);")
         self.label_10.setObjectName("label_10")
-        self.boton_brillo = QtWidgets.QPushButton(self.sensor2_1)
-        self.boton_brillo.setGeometry(QtCore.QRect(560, 350, 101, 51))
-        self.boton_brillo.setStyleSheet("background-color: rgb(170, 170, 255);")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/cct/iconos/aplicar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_brillo.setIcon(icon11)
-        self.boton_brillo.setObjectName("boton_brillo")
         self.textEdit = QtWidgets.QTextEdit(self.sensor2_1)
         self.textEdit.setGeometry(QtCore.QRect(460, 350, 71, 51))
         font = QtGui.QFont()
@@ -573,6 +720,61 @@ class Ui_MainWindow(object):
         self.mensaje_bombilla = QtWidgets.QLineEdit(self.sensor2_1)
         self.mensaje_bombilla.setGeometry(QtCore.QRect(200, 70, 331, 32))
         self.mensaje_bombilla.setObjectName("mensaje_bombilla")
+        self.frame_15 = QtWidgets.QFrame(self.sensor2_1)
+        self.frame_15.setGeometry(QtCore.QRect(150, 180, 111, 71))
+        self.frame_15.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_15.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_15.setObjectName("frame_15")
+        self.boton_on = QtWidgets.QPushButton(self.frame_15)
+        self.boton_on.setGeometry(QtCore.QRect(0, 0, 111, 71))
+        self.boton_on.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/cct/iconos/light-bulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_on.setIcon(icon12)
+        self.boton_on.setObjectName("boton_on")
+        self.frame_16 = QtWidgets.QFrame(self.sensor2_1)
+        self.frame_16.setGeometry(QtCore.QRect(470, 180, 111, 71))
+        self.frame_16.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.boton_off = QtWidgets.QPushButton(self.frame_16)
+        self.boton_off.setGeometry(QtCore.QRect(0, 0, 111, 71))
+        self.boton_off.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        self.boton_off.setIcon(icon12)
+        self.boton_off.setObjectName("boton_off")
+        self.frame_17 = QtWidgets.QFrame(self.sensor2_1)
+        self.frame_17.setGeometry(QtCore.QRect(560, 350, 101, 51))
+        self.frame_17.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.frame_17.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_17.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_17.setObjectName("frame_17")
+        self.boton_brillo = QtWidgets.QPushButton(self.frame_17)
+        self.boton_brillo.setGeometry(QtCore.QRect(0, 0, 101, 51))
+        self.boton_brillo.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}\n"
+"")
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/cct/iconos/aplicar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_brillo.setIcon(icon13)
+        self.boton_brillo.setObjectName("boton_brillo")
         self.stackedWidget.addWidget(self.sensor2_1)
         self.Pagina_Auto = QtWidgets.QWidget()
         self.Pagina_Auto.setObjectName("Pagina_Auto")
@@ -679,19 +881,18 @@ class Ui_MainWindow(object):
         self.boton1_1.setText(_translate("MainWindow", "Datos Actuales"))
         self.boton1_2.setText(_translate("MainWindow", "Gráfica"))
         self.boton1_3.setText(_translate("MainWindow", "Tabla"))
+        self.boton1_4.setText(_translate("MainWindow", "Cargar datos"))
         self.menu.setItemText(self.menu.indexOf(self.Sensor1), _translate("MainWindow", "Sensor Xiaomi"))
         self.Sensor2.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.boton2_1.setText(_translate("MainWindow", "Control"))
         self.menu.setItemText(self.menu.indexOf(self.Sensor2), _translate("MainWindow", "Bombilla Philips"))
         self.boton_auto.setText(_translate("MainWindow", "Modo Auto"))
         self.menu.setItemText(self.menu.indexOf(self.ModoAuto), _translate("MainWindow", "Modo Automático"))
-        self.boton_buscar.setText(_translate("MainWindow", "Buscar dispositivos"))
         self.nombre_sensor1.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         self.nombre_sensor2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Philips Hue Bombilla E27</span></p></body></html>"))
         self.boton_emparejar.setText(_translate("MainWindow", "Emparejar"))
         self.boton_emparejar_bombilla.setText(_translate("MainWindow", "Emparejar"))
-        self.botonMedida.setText(_translate("MainWindow", "Tomar\n"
-" medida"))
+        self.boton_buscar.setText(_translate("MainWindow", "Buscar dispositivos"))
         self.medidaautomatica.setText(_translate("MainWindow", "Tomar medida automática cada:"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600; color:#aaaaff;\">Temperatura (ºC)</span></p></body></html>"))
@@ -699,6 +900,8 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600; color:#aaaaff;\">Bateria (%)</span></p></body></html>"))
         self.label_4.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600; color:#aaaaff;\">Voltaje Bateria (V)</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", " min"))
+        self.botonMedida.setText(_translate("MainWindow", "Tomar\n"
+" medida"))
         self.label_6.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         item = self.tabla_sensor.horizontalHeaderItem(0)
@@ -711,14 +914,21 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Humedad (%)"))
         item = self.tabla_sensor.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Batería (%)"))
-        self.boton_borrartabla_entera.setText(_translate("MainWindow", "Borrar todo"))
         self.boton_borrartabla_ultimo.setText(_translate("MainWindow", "Borrar último"))
+        self.boton_borrartabla_entera.setText(_translate("MainWindow", "Borrar todo"))
+        self.boton_VisualizarDatos.setText(_translate("MainWindow", "Visualizar datos \n"
+" anteiores"))
+        self.boton_BorrarDatos.setText(_translate("MainWindow", "Borrar todos los \n"
+" datos anteriores"))
+        self.boton_CargarDatos.setText(_translate("MainWindow", "Cargar datos \n"
+" anteriores en la tabla"))
+        self.label_8.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         self.nombre_sensor2_2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Philips Hue Bombilla E27</span></p></body></html>"))
+        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Introduce el nivel de brillo deseado </p></body></html>"))
+        self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.boton_on.setText(_translate("MainWindow", "ON"))
         self.boton_off.setText(_translate("MainWindow", "OFF"))
-        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Introduce el nivel de brillo deseado </p></body></html>"))
         self.boton_brillo.setText(_translate("MainWindow", "Aplicar"))
-        self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.label_11.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Introduce el nivel de humedad </p></body></html>"))
         self.modoAuto.setText(_translate("MainWindow", "Modo auto"))
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Introduce el nivel de brillo</p></body></html>"))

@@ -22,21 +22,22 @@ class ejemplo_GUI(QMainWindow):
         self.ui.setupUi(self)
         self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_1)
         self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_2)
-        self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_2)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_3)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_4)
         self.ui.stackedWidget.setCurrentWidget(self.ui.sensor2_1)
         self.ui.stackedWidget.setCurrentWidget(self.ui.home)
-        #LISTAR DISPOSITIVOS EN NUEVA VENTANA
-        self.ui.boton_buscar.clicked.connect(self.funcion_buscar)
-        self.ui.nueva_ventana = Nueva_ventana()
         #BOTONES LÍNEA SUPERIOR
         self.ui.boton_minimizar.clicked.connect(lambda:self.showMinimized())
         self.ui.boton_cerrar.clicked.connect(lambda:self.close())
-        #EMPAREJAR SENSOR
+        #LISTAR DISPOSITIVOS EN NUEVA VENTANA
+        self.ui.boton_buscar.clicked.connect(self.funcion_buscar)
+        self.ui.nueva_ventana = Nueva_ventana()
+        #EMPAREJAR SENSOR NUEVA VENTANA
         self.ui.boton_emparejar.clicked.connect(self.funcion_emparejar)
         self.ui.emparejar_ventana = Emparejar_ventana()
         self.ui.mensaje_emparejar.textChanged.connect(lambda: self.ui.mensaje_emparejar.setStyleSheet("QLineEdit { color: white}"))
         self.ui.mensaje_sensor.textChanged.connect(lambda: self.ui.mensaje_sensor.setStyleSheet("QLineEdit { color: white}"))
-        #EMPAREJAR BOMBILLA
+        #EMPAREJAR BOMBILLA NUEVA VENTANA
         self.ui.boton_emparejar_bombilla.clicked.connect(self.funcion_emparejar_bombilla)
         self.ui.emparejar_ventanaBombilla = Emparejar_ventanaBombilla()
         self.ui.mensaje_emparejar_bombilla.textChanged.connect(lambda: self.ui.mensaje_emparejar_bombilla.setStyleSheet("QLineEdit { color: white}"))
@@ -47,10 +48,11 @@ class ejemplo_GUI(QMainWindow):
         self.ui.boton1_1.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_1))
         self.ui.boton1_2.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_2))
         self.ui.boton1_3.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_3))
+        self.ui.boton1_4.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor1_4))
         self.ui.boton2_1.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor2_1))
         self.ui.botonInicio.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.home))
         self.ui.boton_auto.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Pagina_Auto))
-        #BOTONES DEL SENSOR XIAOMI DATOS ACTUALES
+        #SENSOR XIAOMI DATOS ACTUALES
         self.ui.botonMedida.clicked.connect (self.funcion_medida)
         self.ui.medidaautomatica.stateChanged.connect(self.funcion_MedidaAuto)
         self.ui.spinBox.editingFinished.connect(self.funcion_MedidaAuto)
@@ -64,7 +66,7 @@ class ejemplo_GUI(QMainWindow):
         #Modificar elementos tabla
         self.ui.boton_borrartabla_entera.clicked.connect (self.funcion_borrartabla)
         self.ui.boton_borrartabla_ultimo.clicked.connect(self.funcion_borrartabla_ultimo)
-        #GRAFICA
+        #SENSOR XIAOMI GRAFICA
         self.figura=self.ui.grafica.canvas.fig
         self.ejes1=self.figura.add_subplot(211)
         self.ejes2=self.figura.add_subplot(212)
@@ -79,17 +81,21 @@ class ejemplo_GUI(QMainWindow):
         self.ejes2.set(xlabel='Tiempo (h)', ylabel='Humedad (%)')
         self.ejes1.grid()
         self.ejes2.grid()
+        #SENSOR XIAOMI CARGAR DATOS
+        self.ui.boton_CargarDatos.clicked.connect(self.funcion_CargarDatosEnTabla)
+        self.ui.boton_BorrarDatos.clicked.connect(self.funcion_BorrarDatos)
+        self.ui.boton_VisualizarDatos.clicked.connect(self.funcion_VisualizarDatos)
         #BOMBILLA
         self.ui.boton_on.clicked.connect(self.funcion_encender) 
         self.ui.boton_off.clicked.connect(self.funcion_apagar)
         self.ui.boton_brillo.clicked.connect(self.funcion_brillo)
         self.ui.mensaje_brillo.textChanged.connect(lambda: self.ui.mensaje_brillo.setStyleSheet("QLineEdit { color: white}"))
-        #Modo Automatico
+        #Modo Automatico-Escenas
         self.ui.modoAuto.stateChanged.connect(self.funcion_ModoAuto)
         self.ui.spinBox_brillo.editingFinished.connect(self.funcion_ModoAuto)
         self.ui.spinBox_humedad.editingFinished.connect(self.funcion_ModoAuto)
         
-        
+    #FUNCIÓN BOTÓN LISTAR DISPOSTIVOS    
     def funcion_buscar(self):
         print('Pulsado')
         self.ui.nueva_ventana.exec()
@@ -160,6 +166,7 @@ class ejemplo_GUI(QMainWindow):
             enviar_temp_nube(temp)
             enviar_hum_nube(hum)
             enviar_bat_nube(bat)
+            
             if MedidaAutomatica == True:
                 if self.ui.spinBox_humedad.value() == hum:
                     encender()
@@ -168,6 +175,8 @@ class ejemplo_GUI(QMainWindow):
                 else:
                     apagar()
                     enviar_bombilla_nube(0)
+                    
+            #funcion_guardar_datos_tabla(self)
    
     def funcion_MedidaAuto(self):
         if self.ui.medidaautomatica.isChecked()==True:
@@ -187,6 +196,21 @@ class ejemplo_GUI(QMainWindow):
             
     def funcion_borrartabla_ultimo(self):
         self.ui.tabla_sensor.removeRow(1)
+    
+    #Para modificar los datos cargados
+    def funcion_BorrarDatos(self):
+        open("/home/pi/BLE-python/Cargar_datos_tabla.txt", "w").close()
+        with open('Cargar_datos_tabla.txt', 'r') as myfile:
+            datos=myfile.read()
+        self.ui.Listar_Datos.setText(str(datos))
+        
+    def funcion_VisualizarDatos(self):
+         with open('Cargar_datos_tabla.txt', 'r') as myfile:
+            datos=myfile.read()
+         self.ui.Listar_Datos.setText(str(datos))
+    
+    def funcion_CargarDatosEnTabla (self):
+        print("Tengo que meter los datos del fichero en la tabla")
         
     #BOMBILLA      
     def funcion_encender (self):

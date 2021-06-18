@@ -65,11 +65,11 @@ def Medida (mac):
         connected=True
         p.waitForNotifications(2000)
 				# handleNotification() was called
-    #crear_archivo()
+    crear_archivo() 
 	
 def crear_archivo():
-    file=open("/home/pi/Desktop/GUI/medidas.txt", "a")
-    file.write(str(time.strftime("%S"))+","+str(measurement.temperature))
+    file=open("/home/pi/BLE-python/Cargar_datos_tabla.txt", "a")
+    file.write(str(time.strftime('%d-%m-%Y')) + " , "+str(time.strftime("%H:%M:%S"))+", "+str(measurement.temperature)+", "+str(measurement.humidity)+" ,"+ str(measurement.battery))
     file.write(os.linesep)
     file.close()
 # Main loop --------
