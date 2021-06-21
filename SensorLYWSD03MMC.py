@@ -8,6 +8,7 @@ import traceback
 import time
 global measurements
 import os
+import numpy as np
 
 @dataclass
 class Measurement:
@@ -68,10 +69,15 @@ def Medida (mac):
     crear_archivo() 
 	
 def crear_archivo():
-    file=open("/home/pi/BLE-python/Cargar_datos_tabla.txt", "a")
-    file.write(str(time.strftime('%d-%m-%Y')) + " , "+str(time.strftime("%H:%M:%S"))+", "+str(measurement.temperature)+", "+str(measurement.humidity)+" ,"+ str(measurement.battery))
+#     array=[]
+#     array.append((time.strftime('%d-%m-%Y'), time.strftime("%H:%M:%S"), measurement.temperature, measurement.humidity, measurement.battery))
+#     file= open("/home/pi/BLE-python/Datos_sensor.txt", "a")
+#     np.savetxt(file, array, delimiter=" | ", fmt="%s", newline=os.linesep )
+    file=open("/home/pi/BLE-python/Datos_sensor.txt", "a")
+    file.write(str(time.strftime('%d-%m-%Y')) + " | "+str(time.strftime("%H:%M:%S"))+" | "+str(measurement.temperature)+" | "+str(measurement.humidity)+" | "+ str(measurement.battery))
     file.write(os.linesep)
     file.close()
+     
 # Main loop --------
 
 #Medida ()

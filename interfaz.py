@@ -13,6 +13,7 @@ from busqueda import funcion_busqueda
 import re
 from bombilla import *
 from cayenne import *
+import numpy as np
 
 class ejemplo_GUI(QMainWindow):
     def __init__(self):
@@ -66,7 +67,7 @@ class ejemplo_GUI(QMainWindow):
         #Modificar elementos tabla
         self.ui.boton_borrartabla_entera.clicked.connect (self.funcion_borrartabla)
         self.ui.boton_borrartabla_ultimo.clicked.connect(self.funcion_borrartabla_ultimo)
-        #SENSOR XIAOMI GRAFICA
+        #SENSOR XIAOMI GRÁFICA
         self.figura=self.ui.grafica.canvas.fig
         self.ejes1=self.figura.add_subplot(211)
         self.ejes2=self.figura.add_subplot(212)
@@ -90,7 +91,7 @@ class ejemplo_GUI(QMainWindow):
         self.ui.boton_off.clicked.connect(self.funcion_apagar)
         self.ui.boton_brillo.clicked.connect(self.funcion_brillo)
         self.ui.mensaje_brillo.textChanged.connect(lambda: self.ui.mensaje_brillo.setStyleSheet("QLineEdit { color: white}"))
-        #Modo Automatico-Escenas
+        #MODO AUTOMÁTICO-ESCENAS
         self.ui.modoAuto.stateChanged.connect(self.funcion_ModoAuto)
         self.ui.spinBox_brillo.editingFinished.connect(self.funcion_ModoAuto)
         self.ui.spinBox_humedad.editingFinished.connect(self.funcion_ModoAuto)
@@ -128,6 +129,11 @@ class ejemplo_GUI(QMainWindow):
             
     #FUNCIONES SENSOR     
     def funcion_medida(self):
+        global cont
+        global date_anterior
+        global temp_anterior
+        global hum_anterior
+        
         if valido_sensor==False:
             self.ui.mensaje_sensor.setText("No se pueden hacer medidas no emparejado")
             print("No se puede realizar medidas, sensor no emparejdo")
@@ -143,12 +149,12 @@ class ejemplo_GUI(QMainWindow):
             self.ui.Bateria.setText(str(bat))
             self.ui.Voltaje.setText(str(vol))
             #Guardar los datos
-            self.ui.datos=[]
-            self.ui.datos.append((datetime.today().strftime('%d-%m-%Y'),time.strftime("%H:%M:%S"),str(temp),str(hum),str(bat)))
-            
+            datos=[]
+            datos.append((datetime.today().strftime('%d-%m-%Y'),time.strftime("%H:%M:%S"),str(temp),str(hum),str(bat)))
+            print(datos)
             #Agregar contenido a la tabla
             fila=0
-            for registro in self.ui.datos:
+            for registro in datos:
                 columna=0
                 self.ui.tabla_sensor.insertRow(fila)
                 for elemento in registro:                
@@ -156,12 +162,23 @@ class ejemplo_GUI(QMainWindow):
                     self.ui.tabla_sensor.setItem(fila,columna,celda)
                     columna+=1
                 fila+=1
-            #self.ejes1.scatter(date, temp, color='green')
-            self.ejes1.scatter(date, temp)
-            self.ejes2.scatter(date, hum, marker='s')
-            #self.ejes.errorbar([date_anterior,date],[temp_anterior, temp])
-            #date_anterior=date
-            #temp_anterior=temp  
+            
+            if cont == 0:
+                self.ejes1.scatter(date, temp)
+                self.ejes2.scatter(date, hum, marker='s')
+            else:
+                self.ejes1.scatter(date, temp)
+                self.ejes2.scatter(date, hum, marker='s')
+                self.ejes1.errorbar([date_anterior,date],[temp_anterior,temp])
+                self.ejes2.errorbar([date_anterior,date],[hum_anterior,hum])
+                print (date_anterior)
+                print(date)
+            
+            date_anterior=date
+            temp_anterior=temp
+            hum_anterior=hum
+            
+            cont=1
             self.ui.grafica.canvas.draw()
             enviar_temp_nube(temp)
             enviar_hum_nube(hum)
@@ -199,18 +216,34 @@ class ejemplo_GUI(QMainWindow):
     
     #Para modificar los datos cargados
     def funcion_BorrarDatos(self):
-        open("/home/pi/BLE-python/Cargar_datos_tabla.txt", "w").close()
-        with open('Cargar_datos_tabla.txt', 'r') as myfile:
-            datos=myfile.read()
-        self.ui.Listar_Datos.setText(str(datos))
+        open("/home/pi/BLE-python/Cargar_Datos_Antiguos.txt", "w").close()
+        with open('Cargar_Datos_Antiguos.txt', 'r') as myfile:
+            datos_fichero=myfile.read()
+        self.ui.Listar_Datos.setText(str(datos_fichero))
         
     def funcion_VisualizarDatos(self):
-         with open('Cargar_datos_tabla.txt', 'r') as myfile:
-            datos=myfile.read()
-         self.ui.Listar_Datos.setText(str(datos))
+         with open('Cargar_Datos_Antiguos.txt', 'r') as myfile:
+            datos_fichero=myfile.read()
+         self.ui.Listar_Datos.setText(str(datos_fichero))
     
     def funcion_CargarDatosEnTabla (self):
-        print("Tengo que meter los datos del fichero en la tabla")
+        datos_anteriores=np.loadtxt("/home/pi/BLE-python/Cargar_Datos_Antiguos.txt", delimiter=os.linesep, dtype="str")
+        print(datos_anteriores)
+        #porque con una sola medida da errores
+        l=[]
+        l.append(str(datos_anteriores))
+        if datos_anteriores.size==1:
+            datos_anteriores=l
+        #meter los datos en la tabla
+        fila=0
+        for registro in reversed(datos_anteriores):
+             columna=0
+             self.ui.tabla_sensor.insertRow(fila)
+             for elemento in registro.split(" | "):                
+                 celda=QTableWidgetItem(elemento)
+                 self.ui.tabla_sensor.setItem(fila,columna,celda)
+                 columna+=1
+             fila+=1
         
     #BOMBILLA      
     def funcion_encender (self):
@@ -241,7 +274,8 @@ class ejemplo_GUI(QMainWindow):
                     enviar_bombilla_nube(bri)
                 else: 
                     self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
-                
+    
+    #MODO AUTOMÁTICO            
     def funcion_ModoAuto(self):
         global MedidaAutomatica
         if self.ui.modoAuto.isChecked()==True:
@@ -318,7 +352,7 @@ class Emparejar_ventanaBombilla (QDialog):
             self.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
             valido_bombilla=False
             
-            
+#MAIN           
 if __name__ == '__main__':
     app=QApplication(sys.argv) #Para abrir la aplicación
     GUI = ejemplo_GUI()
@@ -326,26 +360,41 @@ if __name__ == '__main__':
     emparejar_ventana=Emparejar_ventana()
     emparejar_ventanaBombilla=Emparejar_ventanaBombilla()
     GUI.show()
-    #Comprobar si el sensor está emparejado
+    #Comprobar si el sensor está guardado
     with open('Guardar_mac_sensor.txt', 'r') as myfile:
         mac=myfile.read()
     if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac):
         valido_sensor=True
-        #self.ui.mensaje_emparejar.setText("Sensor emparejado")
     else:
         valido_sensor=False
         
-     #Comprobar que la bombilla está guardada   
+    #Comprobar que la bombilla está guardada   
     with open('Guardar_mac_bombilla.txt', 'r') as myfile:
         mac_bombilla=myfile.read()
     if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac_bombilla):
         valido_bombilla=True
-        #self.ui.mensaje_emparejar.setText("Sensor emparejado")
     else:
         valido_bombilla=False
+        
     GUI.funcion_texto_inicio()
-    GUI.funcion_texto_inicio_bombilla()  
+    GUI.funcion_texto_inicio_bombilla()
+    
+    #Meter los datos actuales en el fichero de los datos antiguos antes de borrarlo
+    file=open("/home/pi/BLE-python/Cargar_Datos_Antiguos.txt", "a")
+    with open('Datos_sensor.txt', 'r') as myfile:
+         datos_fichero=myfile.read()      
+    file.write(datos_fichero)
+    file.close()
+    open("/home/pi/BLE-python/Datos_sensor.txt", "w").close() #Para borrar los datos del sensor y empezar de nuevo
+    
     MedidaAutomatica=False
+    
+    #Para pintar la gráfica uniendo sus puntos
+    cont=0
+    date_anterior=0
+    temp_anterior=0
+    hum_anterior=0
+    
     app.exec_()
     #sys.exit()
         
