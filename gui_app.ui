@@ -532,15 +532,27 @@ QPushButton:hover{
          <height>32</height>
         </rect>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QLineEdit" name="mensaje_emparejar_bombilla">
        <property name="geometry">
         <rect>
-         <x>380</x>
+         <x>410</x>
          <y>390</y>
          <width>291</width>
          <height>32</height>
         </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QFrame" name="frame_9">
@@ -764,6 +776,12 @@ QPushButton:hover{
        <property name="styleSheet">
         <string notr="true">background-color: rgb(170, 170, 255);</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QLineEdit" name="Humedad">
        <property name="geometry">
@@ -782,6 +800,12 @@ QPushButton:hover{
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(170, 170, 255);</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="Bateria">
@@ -802,6 +826,12 @@ QPushButton:hover{
        <property name="styleSheet">
         <string notr="true">background-color: rgb(170, 170, 255);</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QLineEdit" name="Voltaje">
        <property name="geometry">
@@ -820,6 +850,12 @@ QPushButton:hover{
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(170, 170, 255);</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QLabel" name="label_2">
@@ -954,6 +990,12 @@ QPushButton:hover{
          <width>331</width>
          <height>32</height>
         </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QFrame" name="frame">
@@ -1306,6 +1348,9 @@ QPushButton:hover{
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QFrame" name="frame_6">
       <property name="geometry">
@@ -1536,6 +1581,12 @@ QPushButton:hover{
         <height>32</height>
        </rect>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
@@ -1562,6 +1613,12 @@ border-image: url(:/cct/iconos/brillo.png);</string>
         <width>331</width>
         <height>32</height>
        </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QFrame" name="frame_15">

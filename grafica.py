@@ -8,8 +8,6 @@ class MplCanvas(FigureCanvas):
         # self.axes = self.fig.add_subplot(111)
         super().__init__(self.fig)
         #self.ejes = self.fig.add_subplot(111)
-
-        
         #self.ejes.set_xlim(xlim)
         #self.ejes.set_ylim(ylim)
         #self.ejes.scatter(5, 8)

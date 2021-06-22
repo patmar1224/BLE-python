@@ -8,7 +8,6 @@ import traceback
 import time
 global measurements
 import os
-import numpy as np
 
 @dataclass
 class Measurement:

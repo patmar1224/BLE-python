@@ -59,6 +59,12 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(48, 48, 48);</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
