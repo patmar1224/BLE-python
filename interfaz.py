@@ -8,12 +8,15 @@ from SensorLYWSD03MMC import *
 from SensorLYWSD03MMC import measurement
 from datetime import datetime
 import time
+from datetime import datetime
+import datetime
 from gui_app import Ui_MainWindow
 from busqueda import funcion_busqueda
 import re
 from bombilla import *
 from cayenne import *
 import numpy as np
+import matplotlib.dates as mdates
 
 class ejemplo_GUI(QMainWindow):
     def __init__(self):
@@ -71,12 +74,19 @@ class ejemplo_GUI(QMainWindow):
         self.figura=self.ui.grafica.canvas.fig
         self.ejes1=self.figura.add_subplot(211)
         self.ejes2=self.figura.add_subplot(212)
-        xlim = [0.0, 23.59]
+        #xlim = [0.0, 23.59]
+        x = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00","14:00", "16:00", "18:00", "20:00", "22:00", "23:59"]
+        dates_graf = [datetime.datetime.strptime(h, "%H:%M") for h in x]
+        xformater = mdates.DateFormatter('%H:%M')
         ylim = [0, 60]
         ylim2=[0, 100]
-        self.ejes1.set_xlim(xlim)
+        #self.ejes1.set_xlim(xlim)
+        self.ejes1.xaxis.set_major_formatter(xformater)
+        self.ejes1.set_xlim((min(dates_graf) - datetime.timedelta(hours=1),max(dates_graf) + datetime.timedelta(hours=1)))
         self.ejes1.set_ylim(ylim)
-        self.ejes2.set_xlim(xlim)
+        #self.ejes2.set_xlim(xlim)
+        self.ejes2.xaxis.set_major_formatter(xformater)
+        self.ejes2.set_xlim((min(dates_graf) - datetime.timedelta(hours=1),max(dates_graf) + datetime.timedelta(hours=1)))
         self.ejes2.set_ylim(ylim2)
         self.ejes1.set(ylabel='Temperatura (ºC)', title='Temperatura y Humedad')
         self.ejes2.set(xlabel='Tiempo (h)', ylabel='Humedad (%)')
@@ -139,7 +149,7 @@ class ejemplo_GUI(QMainWindow):
             print("No se puede realizar medidas, sensor no emparejdo")
         else:    
             Medida(mac)
-            date=float(time.strftime("%H.%M")) #Para meterlo en la gráfica
+            #date=float(time.strftime("%H.%M")) #Para meterlo en la gráfica
             temp=measurement.temperature
             hum=measurement.humidity
             bat= measurement.battery
@@ -150,7 +160,7 @@ class ejemplo_GUI(QMainWindow):
             self.ui.Voltaje.setText(str(vol))
             #Guardar los datos
             datos=[]
-            datos.append((datetime.today().strftime('%d-%m-%Y'),time.strftime("%H:%M:%S"),str(temp),str(hum),str(bat)))
+            datos.append((datetime.datetime.today().strftime('%d-%m-%Y'),time.strftime("%H:%M:%S"),str(temp),str(hum),str(bat)))
             print(datos)
             #Agregar contenido a la tabla
             fila=0
@@ -162,19 +172,21 @@ class ejemplo_GUI(QMainWindow):
                     self.ui.tabla_sensor.setItem(fila,columna,celda)
                     columna+=1
                 fila+=1
+                
+            pr = [(datetime.datetime.now().strftime("%H:%M"))]
+            x = [datetime.datetime.strptime(h, "%H:%M") for h in pr]
             
             if cont == 0:
-                self.ejes1.scatter(date, temp)
-                self.ejes2.scatter(date, hum, marker='s')
+                self.ejes1.scatter(x, temp)
+                self.ejes2.scatter(x, hum, marker='s')
             else:
-                self.ejes1.scatter(date, temp)
-                self.ejes2.scatter(date, hum, marker='s')
-                self.ejes1.errorbar([date_anterior,date],[temp_anterior,temp])
-                self.ejes2.errorbar([date_anterior,date],[hum_anterior,hum])
+                self.ejes1.scatter(x, temp)
+                self.ejes2.scatter(x, hum, marker='s')
+                self.ejes1.errorbar([date_anterior,x],[temp_anterior,temp])
+                self.ejes2.errorbar([date_anterior,x],[hum_anterior,hum])
                 print (date_anterior)
-                print(date)
             
-            date_anterior=date
+            date_anterior=x
             temp_anterior=temp
             hum_anterior=hum
             
@@ -373,6 +385,7 @@ if __name__ == '__main__':
         mac_bombilla=myfile.read()
     if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac_bombilla):
         valido_bombilla=True
+        configuracion_bombilla(str(mac_bombilla))
     else:
         valido_bombilla=False
         
