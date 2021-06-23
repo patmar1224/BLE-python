@@ -3,17 +3,14 @@ from PyQt5 import uic #Carga la aplicación del Qt designer
 from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog, QTableWidgetItem #Para cargar la aplicación
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import QTimer
-import qtawesome as qta
 from SensorLYWSD03MMC import *
-from SensorLYWSD03MMC import measurement
+from bombilla import *
 from datetime import datetime
 import time
-from datetime import datetime
 import datetime
 from gui_app import Ui_MainWindow
 from busqueda import funcion_busqueda
 import re
-from bombilla import *
 from cayenne import *
 import numpy as np
 import matplotlib.dates as mdates
@@ -143,6 +140,7 @@ class ejemplo_GUI(QMainWindow):
         global date_anterior
         global temp_anterior
         global hum_anterior
+        global dia_anterior
         
         if valido_sensor==False:
             self.ui.mensaje_sensor.setText("No se pueden hacer medidas no emparejado")
@@ -150,6 +148,7 @@ class ejemplo_GUI(QMainWindow):
         else:    
             Medida(mac)
             #date=float(time.strftime("%H.%M")) #Para meterlo en la gráfica
+            dia=datetime.datetime.today().strftime('%d') #valor de día 
             temp=measurement.temperature
             hum=measurement.humidity
             bat= measurement.battery
@@ -172,6 +171,28 @@ class ejemplo_GUI(QMainWindow):
                     self.ui.tabla_sensor.setItem(fila,columna,celda)
                     columna+=1
                 fila+=1
+           #La gráfica se reinicia cuando el día ya es diferente
+            if dia_anterior!=dia:
+                self.figura=self.ui.grafica.canvas.fig
+                self.ejes1=self.figura.add_subplot(211)
+                self.ejes2=self.figura.add_subplot(212)
+                x = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00","14:00", "16:00", "18:00", "20:00", "22:00", "23:59"]
+                dates_graf = [datetime.datetime.strptime(h, "%H:%M") for h in x]
+                xformater = mdates.DateFormatter('%H:%M')
+                ylim = [0, 60]
+                ylim2=[0, 100]
+                self.ejes1.xaxis.set_major_formatter(xformater)
+                self.ejes1.set_xlim((min(dates_graf) - datetime.timedelta(hours=1),max(dates_graf) + datetime.timedelta(hours=1)))
+                self.ejes1.set_ylim(ylim)
+                self.ejes2.xaxis.set_major_formatter(xformater)
+                self.ejes2.set_xlim((min(dates_graf) - datetime.timedelta(hours=1),max(dates_graf) + datetime.timedelta(hours=1)))
+                self.ejes2.set_ylim(ylim2)
+                self.ejes1.set(ylabel='Temperatura (ºC)', title='Temperatura y Humedad')
+                self.ejes2.set(xlabel='Tiempo (h)', ylabel='Humedad (%)')
+                self.ejes1.grid()
+                self.ejes2.grid()
+                self.ui.grafica.canvas.draw()
+                cont=0
                 
             pr = [(datetime.datetime.now().strftime("%H:%M"))]
             x = [datetime.datetime.strptime(h, "%H:%M") for h in pr]
@@ -186,10 +207,12 @@ class ejemplo_GUI(QMainWindow):
                 self.ejes2.errorbar([date_anterior,x],[hum_anterior,hum])
                 print (date_anterior)
             
+          
+                
             date_anterior=x
             temp_anterior=temp
             hum_anterior=hum
-            
+            dia_anterior=dia
             cont=1
             self.ui.grafica.canvas.draw()
             enviar_temp_nube(temp)
@@ -334,7 +357,17 @@ class Emparejar_ventana (QDialog):
         else:
             print ("Introduce la MAC en formato AA:BB:CC:DD:EE:FF sin importar las mayusculas")
             self.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
-            valido_sensor=False
+              #Si introduces mal la mac mira si la del fichero es correcta y se queda con esa
+            with open('Guardar_mac_sensor.txt', 'r') as myfile:
+                mac=myfile.read()
+            if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac_bombilla):
+                valido_sensor=True
+                self.mensaje_mac.setText("Mac no válida, sensor " + str(mac) + " anterior emparejado")
+
+            else:
+                valido_sensor=False
+            
+        GUI.funcion_texto_inicio()
             
 #Ventana de emparejar la bombilla          
 class Emparejar_ventanaBombilla (QDialog):
@@ -362,7 +395,17 @@ class Emparejar_ventanaBombilla (QDialog):
         else:
             print ("Introduce la MAC en formato AA:BB:CC:DD:EE:FF sin importar las mayusculas")
             self.mensaje_mac.setText("Error, MAC en formato AA:BB:CC:DD:EE:FF")
-            valido_bombilla=False
+            #Si introduces mal la mac mira si la del fichero es correcta y se queda con esa
+            with open('Guardar_mac_bombilla.txt', 'r') as myfile:
+                mac_bombilla=myfile.read()
+            if re.match("[0-9a-fA-F]{2}([:]?)[0-9a-fA-F]{2}(\\1[0-9a-fA-F]{2}){4}$",mac_bombilla):
+                valido_bombilla=True
+                self.mensaje_mac.setText("Mac no válida, sensor " + str(mac_bombilla) + " anterior emparejado")
+
+            else:
+                valido_bombilla=False
+         
+        GUI.funcion_texto_inicio_bombilla()
             
 #MAIN           
 if __name__ == '__main__':
@@ -407,7 +450,8 @@ if __name__ == '__main__':
     date_anterior=0
     temp_anterior=0
     hum_anterior=0
-    
+    dia_anterior=datetime.datetime.today().strftime('%d')
+   
     app.exec_()
     #sys.exit()
         

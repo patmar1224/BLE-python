@@ -1,30 +1,30 @@
-·Device 7b:9f:77:cc:86:barandom, RSSI= -60dB
+·Device 68:27:37:0e:89:cbpublic, RSSI= -85dB
+Short Local Name[TV] Samsung 5 Series (32)
 Flags1a
-Tx Power0c
-Manufacturer4c001005141806c78a
-·Device 68:27:37:0e:89:cbpublic, RSSI= -89dB
-Manufacturer750042040180406827370e89cb6a27370e89ca01260000000000
-·Device 20:d6:32:ab:e5:44random, RSSI= -87dB
-Manufacturer0600010f2002247edb6ceda9756b1f350b01ca8aa1154865417aa3011a
-·Device cd:d2:e9:40:11:bcrandom, RSSI= -77dB
+Manufacturer750042040101416827370e89cb6a27370e89caff260000000000
+·Device cd:d2:e9:40:11:bcrandom, RSSI= -73dB
 Flags06
 Incomplete 16b Services0000fe0f-0000-1000-8000-00805f9b34fb
 Tx Power0a
-16b Service Data0ffe0210ffff02
+16b Service Data0ffe0210ffff00
 Complete Local NameHue Lamp
-·Device 17:4f:b2:a3:9a:32random, RSSI= -97dB
+·Device 08:1f:ba:d5:e3:b9random, RSSI= -93dB
 Flags1a
 Complete 16b Services0000fd6f-0000-1000-8000-00805f9b34fb
-16b Service Data6ffd8c28a6abc6c7b7d2e552abaed13ca6f1a531ff15
-·Device fc:f1:36:c5:81:c5public, RSSI= -86dB
+16b Service Data6ffd2b9f8f4b653ff79d84b899eaa0c2458ba8f4d034
+·Device fc:f1:36:c5:81:c5public, RSSI= -89dB
 Manufacturer7500420401808efcf136c581c5fef136c821b101000000000000
-·Device 0a:83:d8:61:35:eerandom, RSSI= -92dB
-Manufacturer060001092002c087049ffcaeea5495f0318406e26676924b675e7556e8
-·Device a4:c1:38:52:09:5fpublic, RSSI= -69dB
+·Device a4:c1:38:52:09:5fpublic, RSSI= -73dB
 Flags06
-16b Service Data95fe30585b05635f095238c1a408
+16b Service Data95fe30585b05395f095238c1a408
 Complete Local NameLYWSD03MMC
-·Device 41:10:3e:5d:9c:4brandom, RSSI= -94dB
+·Device 3b:d4:3b:54:2c:bfrandom, RSSI= -93dB
 Flags1a
-Tx Power06
-Manufacturer4c0010052118770876
+Manufacturer4c000a0100
+·Device 76:ca:68:f5:c3:farandom, RSSI= -93dB
+Manufacturer0600010f20021e218bfde2168342ef988103d24d403d371d9aa00bdb08
+·Device d3:38:e1:71:9d:edrandom, RSSI= -62dB
+Flags06
+Incomplete 16b Services0000fee0-0000-1000-8000-00805f9b34fb
+Complete Local NameMi Band 3
+Manufacturer570100cdb7eeabe3ddc37bebe41e933d0f3ba302d338e1719ded
