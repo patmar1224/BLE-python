@@ -14,6 +14,7 @@ import re
 from cayenne import *
 import numpy as np
 import matplotlib.dates as mdates
+from Dropbox import subir_dropbox
 
 class ejemplo_GUI(QMainWindow):
     def __init__(self):
@@ -69,8 +70,11 @@ class ejemplo_GUI(QMainWindow):
         self.ui.boton_borrartabla_ultimo.clicked.connect(self.funcion_borrartabla_ultimo)
         #SENSOR XIAOMI GRÁFICA
         self.figura=self.ui.grafica.canvas.fig
+        self.figura.set_facecolor('#AAAAFF')
         self.ejes1=self.figura.add_subplot(211)
+        self.ejes1.set_facecolor('#AAAAFF')
         self.ejes2=self.figura.add_subplot(212)
+        self.ejes2.set_facecolor('#AAAAFF')
         #xlim = [0.0, 23.59]
         x = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00","14:00", "16:00", "18:00", "20:00", "22:00", "23:59"]
         dates_graf = [datetime.datetime.strptime(h, "%H:%M") for h in x]
@@ -85,10 +89,14 @@ class ejemplo_GUI(QMainWindow):
         self.ejes2.xaxis.set_major_formatter(xformater)
         self.ejes2.set_xlim((min(dates_graf) - datetime.timedelta(hours=1),max(dates_graf) + datetime.timedelta(hours=1)))
         self.ejes2.set_ylim(ylim2)
-        self.ejes1.set(ylabel='Temperatura (ºC)', title='Temperatura y Humedad')
-        self.ejes2.set(xlabel='Tiempo (h)', ylabel='Humedad (%)')
-        self.ejes1.grid()
-        self.ejes2.grid()
+        self.ejes1.set_title('Temperatura y Humedad', fontdict={'fontsize':14, 'color':'black'})
+        self.ejes1.set_ylabel('Temperatura (ºC)')
+        self.ejes2.set_xlabel('Tiempo (h)')
+        self.ejes2.set_ylabel('Humedad (%)')
+        self.ejes1.grid(axis='both', color='gray', linestyle='solid')
+        self.ejes2.grid(axis='both', color='gray', linestyle='solid')
+        #self.ejes1.grid()
+        #self.ejes2.grid()
         #SENSOR XIAOMI CARGAR DATOS
         self.ui.boton_CargarDatos.clicked.connect(self.funcion_CargarDatosEnTabla)
         self.ui.boton_BorrarDatos.clicked.connect(self.funcion_BorrarDatos)
@@ -174,8 +182,11 @@ class ejemplo_GUI(QMainWindow):
            #La gráfica se reinicia cuando el día ya es diferente
             if dia_anterior!=dia:
                 self.figura=self.ui.grafica.canvas.fig
+                self.figura.set_facecolor('#AAAAFF')
                 self.ejes1=self.figura.add_subplot(211)
+                self.ejes1.set_facecolor('#AAAAFF')
                 self.ejes2=self.figura.add_subplot(212)
+                self.ejes2.set_facecolor('#AAAAFF')
                 x = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00","14:00", "16:00", "18:00", "20:00", "22:00", "23:59"]
                 dates_graf = [datetime.datetime.strptime(h, "%H:%M") for h in x]
                 xformater = mdates.DateFormatter('%H:%M')
@@ -187,10 +198,11 @@ class ejemplo_GUI(QMainWindow):
                 self.ejes2.xaxis.set_major_formatter(xformater)
                 self.ejes2.set_xlim((min(dates_graf) - datetime.timedelta(hours=1),max(dates_graf) + datetime.timedelta(hours=1)))
                 self.ejes2.set_ylim(ylim2)
-                self.ejes1.set(ylabel='Temperatura (ºC)', title='Temperatura y Humedad')
+                self.ejes1.set_title('Temperatura y Humedad', fontdict={'fontsize':14, 'color':'black'})
+                self.ejes1.set(ylabel='Temperatura (ºC)')
                 self.ejes2.set(xlabel='Tiempo (h)', ylabel='Humedad (%)')
-                self.ejes1.grid()
-                self.ejes2.grid()
+                self.ejes1.grid(axis='both', color='gray', linestyle='solid')
+                self.ejes2.grid(axis='both', color='gray', linestyle='solid')
                 self.ui.grafica.canvas.draw()
                 cont=0
                 
@@ -198,13 +210,13 @@ class ejemplo_GUI(QMainWindow):
             x = [datetime.datetime.strptime(h, "%H:%M") for h in pr]
             
             if cont == 0:
-                self.ejes1.scatter(x, temp)
-                self.ejes2.scatter(x, hum, marker='s')
+                self.ejes1.scatter(x, temp, color='black')
+                self.ejes2.scatter(x, hum, marker='s', color='black')
             else:
-                self.ejes1.scatter(x, temp)
-                self.ejes2.scatter(x, hum, marker='s')
-                self.ejes1.errorbar([date_anterior,x],[temp_anterior,temp])
-                self.ejes2.errorbar([date_anterior,x],[hum_anterior,hum])
+                self.ejes1.scatter(x, temp, color='black')
+                self.ejes2.scatter(x, hum, marker='s', color='black')
+                self.ejes1.errorbar([date_anterior,x],[temp_anterior,temp], color='black')
+                self.ejes2.errorbar([date_anterior,x],[hum_anterior,hum], color='black')
                 print (date_anterior)
             
           
@@ -451,7 +463,8 @@ if __name__ == '__main__':
     temp_anterior=0
     hum_anterior=0
     dia_anterior=datetime.datetime.today().strftime('%d')
-   
+    
+    subir_dropbox()
     app.exec_()
     #sys.exit()
         

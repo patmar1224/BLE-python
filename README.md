@@ -1,4 +1,4 @@
-# BLE-python
+ # BLE-python
 Conexión de dispositivos BLE, bombilla Philips Hue (luz blanca y brillo ajustable) y sensor xiaomi Mijia (sensor de temperatura y humedad).
 Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 
@@ -31,7 +31,7 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 	-Versión de Bluetooth igual o superior a 5.50 (se comprueba con el comando bluetoothctl -v)
 	-Emparejar la bombilla con el bluetooth de la Raspberry pi
 
-# Para la subida de datos a la nube: 
+# Para la subida de datos a la nube Cayenne: 
 -Necesario tener una cuenta en la página web de cayenne para la subida de resultados, en el siguiente enlace: https://accounts.mydevices.com/auth/realms/cayenne/protocol/openid-connect/auth?response_type=code&scope=email+profile&client_id=cayenne-web-app&state=Ni9R7ZJ0NLdEJUuYqcbTxfOu1ndxWF6QxvMmEXcp&redirect_uri=https%3A%2F%2Fcayenne.mydevices.com%2Fauth%2Fcallback
 
 -Seguir los pasos que se indican una vez te creas la cuenta para instalar cayenne en la raspberry
@@ -39,3 +39,16 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 -Cambiar los datos de usurio, contraseña, cliente, servidor y puerto del fichero cayenne.py por los datos que te muestra después de crearte la cuenta 
 
 -Crear un nuevo proyecto con el nombre cayenne, añadir temperatura, humedad y batería para actualizar los datos
+
+# Para la subida de datos a la nube Dropbox:
+-Cuenta en Dropbox y creación de la app en el siguiente enlace:https://www.dropbox.com/developers
+
+-Dar todos los permisos de lectura y escritura a la aplicación:
+	-En el apartado Permissions activar todos los de Individual Scopes
+
+-Generar el token:
+	-En el apartado OAuth 2 en el botón Generate
+
+-Una vez este lista la aplicación se crea un fichero en esta carpeta de dropbox, con el mismo nombre y extensión cuyo nombre de fichero se quiere subir.
+
+
