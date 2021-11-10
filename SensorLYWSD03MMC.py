@@ -8,6 +8,8 @@ import traceback
 import time
 global measurements
 import os
+from csv import writer
+
 
 @dataclass
 class Measurement:
@@ -76,7 +78,16 @@ def crear_archivo():
     file.write(str(time.strftime('%d-%m-%Y')) + " | "+str(time.strftime("%H:%M:%S"))+" | "+str(measurement.temperature)+" | "+str(measurement.humidity)+" | "+ str(measurement.battery))
     file.write(os.linesep)
     file.close()
-     
+#     file=open("/home/pi/BLE-python/Datos_grafica.txt", "a")
+#     file.write(str(time.strftime('%d-%m-%Y')) + " | "+str(time.strftime("%H:%M:%S"))+" | "+str(measurement.temperature)+" | "+str(measurement.humidity)+" | "+ str(measurement.battery))
+#     file.write(os.linesep)
+#     file.close()
+    list=[(str(time.strftime('%d-%m-%Y')) + " "+str(time.strftime("%H:%M:%S"))),measurement.temperature,  measurement.humidity]
+    with open('/home/pi/BLE-python/datos_grafica.csv', 'a', newline='') as f_object:  
+        writer_object = writer(f_object)
+        writer_object.writerow(list)  
+        f_object.close()
+    
 # Main loop --------
 
 #Medida ()

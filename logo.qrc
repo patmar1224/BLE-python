@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="cct">
+    <file>iconos/cayenne.png</file>
+    <file>iconos/cayenne nombre.png</file>
+    <file>iconos/1490889640-dropbox_82530.png</file>
+    <file>iconos/Dropbox-Icon_icon-icons.com_52862.png</file>
+    <file>iconos/user_setting_settings_icon_148607.png</file>
+    <file>iconos/efficiency4x_86991.png</file>
     <file>iconos/add-square-button.png</file>
     <file>iconos/magnifying-glass.png</file>
     <file>iconos/cloud-storage-download.png</file>

@@ -7,6 +7,7 @@ from SensorLYWSD03MMC import *
 from bombilla import *
 from datetime import datetime
 import time
+import os
 import datetime
 from gui_app import Ui_MainWindow
 from busqueda import funcion_busqueda
@@ -15,6 +16,9 @@ from cayenne import *
 import numpy as np
 import matplotlib.dates as mdates
 from Dropbox import subir_dropbox
+import threading
+import matplotlib.pyplot as plt
+import pandas as pd
 
 class ejemplo_GUI(QMainWindow):
     def __init__(self):
@@ -30,7 +34,7 @@ class ejemplo_GUI(QMainWindow):
         self.ui.stackedWidget.setCurrentWidget(self.ui.home)
         #BOTONES LÍNEA SUPERIOR
         self.ui.boton_minimizar.clicked.connect(lambda:self.showMinimized())
-        self.ui.boton_cerrar.clicked.connect(lambda:self.close())
+        self.ui.boton_cerrar.clicked.connect(self.funcion_cerrar)
         #LISTAR DISPOSITIVOS EN NUEVA VENTANA
         self.ui.boton_buscar.clicked.connect(self.funcion_buscar)
         self.ui.nueva_ventana = Nueva_ventana()
@@ -54,6 +58,7 @@ class ejemplo_GUI(QMainWindow):
         self.ui.boton2_1.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.sensor2_1))
         self.ui.botonInicio.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.home))
         self.ui.boton_auto.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Pagina_Auto))
+        self.ui.boton_configuracion_nube.clicked.connect (lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Pagina_Nube))
         #SENSOR XIAOMI DATOS ACTUALES
         self.ui.botonMedida.clicked.connect (self.funcion_medida)
         self.ui.medidaautomatica.stateChanged.connect(self.funcion_MedidaAuto)
@@ -70,12 +75,11 @@ class ejemplo_GUI(QMainWindow):
         self.ui.boton_borrartabla_ultimo.clicked.connect(self.funcion_borrartabla_ultimo)
         #SENSOR XIAOMI GRÁFICA
         self.figura=self.ui.grafica.canvas.fig
-        self.figura.set_facecolor('#AAAAFF')
+        #self.figura.set_facecolor('#AAAAFF')
         self.ejes1=self.figura.add_subplot(211)
-        self.ejes1.set_facecolor('#AAAAFF')
+        #self.ejes1.set_facecolor('#AAAAFF')
         self.ejes2=self.figura.add_subplot(212)
-        self.ejes2.set_facecolor('#AAAAFF')
-        #xlim = [0.0, 23.59]
+        #self.ejes2.set_facecolor('#AAAAFF')
         x = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00","14:00", "16:00", "18:00", "20:00", "22:00", "23:59"]
         dates_graf = [datetime.datetime.strptime(h, "%H:%M") for h in x]
         xformater = mdates.DateFormatter('%H:%M')
@@ -97,6 +101,9 @@ class ejemplo_GUI(QMainWindow):
         self.ejes2.grid(axis='both', color='gray', linestyle='solid')
         #self.ejes1.grid()
         #self.ejes2.grid()
+        #GRAFICA XIAOMO INDEPENDIENTE
+        self.ui.mostrar_graf_temp.clicked.connect(self.funcion_graficaindependiente)
+        self.ui.mostrar_graf_hum.clicked.connect(self.funcion_graficaindependiente)
         #SENSOR XIAOMI CARGAR DATOS
         self.ui.boton_CargarDatos.clicked.connect(self.funcion_CargarDatosEnTabla)
         self.ui.boton_BorrarDatos.clicked.connect(self.funcion_BorrarDatos)
@@ -110,6 +117,19 @@ class ejemplo_GUI(QMainWindow):
         self.ui.modoAuto.stateChanged.connect(self.funcion_ModoAuto)
         self.ui.spinBox_brillo.editingFinished.connect(self.funcion_ModoAuto)
         self.ui.spinBox_humedad.editingFinished.connect(self.funcion_ModoAuto)
+    
+    def funcion_cerrar(self):
+        self.close()
+        print('Cerrar')
+        #Meter los datos actuales en el fichero de los datos antiguos antes de borrarlo
+        file=open("/home/pi/BLE-python/Cargar_Datos_Antiguos.txt", "a")
+        with open('Datos_sensor.txt', 'r') as myfile:
+            datos_fichero=myfile.read()      
+            file.write(datos_fichero)
+            file.close()
+        open("/home/pi/BLE-python/Datos_sensor.txt", "w").close() #Para borrar los datos del sensor y empezar de nuevo
+        if self.ui.subirdropbox.isChecked()==True:
+            subir_dropbox()
         
     #FUNCIÓN BOTÓN LISTAR DISPOSTIVOS    
     def funcion_buscar(self):
@@ -182,11 +202,11 @@ class ejemplo_GUI(QMainWindow):
            #La gráfica se reinicia cuando el día ya es diferente
             if dia_anterior!=dia:
                 self.figura=self.ui.grafica.canvas.fig
-                self.figura.set_facecolor('#AAAAFF')
+                #self.figura.set_facecolor('#AAAAFF')
                 self.ejes1=self.figura.add_subplot(211)
-                self.ejes1.set_facecolor('#AAAAFF')
+                #self.ejes1.set_facecolor('#AAAAFF')
                 self.ejes2=self.figura.add_subplot(212)
-                self.ejes2.set_facecolor('#AAAAFF')
+                #self.ejes2.set_facecolor('#AAAAFF')
                 x = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00","14:00", "16:00", "18:00", "20:00", "22:00", "23:59"]
                 dates_graf = [datetime.datetime.strptime(h, "%H:%M") for h in x]
                 xformater = mdates.DateFormatter('%H:%M')
@@ -205,18 +225,21 @@ class ejemplo_GUI(QMainWindow):
                 self.ejes2.grid(axis='both', color='gray', linestyle='solid')
                 self.ui.grafica.canvas.draw()
                 cont=0
-                
+            hora = datetime.datetime.now()
+            hora_app = hora.strftime("%H:%M")
+            print(hora_app)
             pr = [(datetime.datetime.now().strftime("%H:%M"))]
             x = [datetime.datetime.strptime(h, "%H:%M") for h in pr]
             
+              
             if cont == 0:
-                self.ejes1.scatter(x, temp, color='black')
-                self.ejes2.scatter(x, hum, marker='s', color='black')
+                self.ejes1.scatter(x, temp)
+                self.ejes2.scatter(x, hum, marker='s')
             else:
-                self.ejes1.scatter(x, temp, color='black')
-                self.ejes2.scatter(x, hum, marker='s', color='black')
-                self.ejes1.errorbar([date_anterior,x],[temp_anterior,temp], color='black')
-                self.ejes2.errorbar([date_anterior,x],[hum_anterior,hum], color='black')
+                self.ejes1.scatter(x, temp)
+                self.ejes2.scatter(x, hum, marker='s')
+                self.ejes1.errorbar([date_anterior,x],[temp_anterior,temp])
+                self.ejes2.errorbar([date_anterior,x],[hum_anterior,hum])
                 print (date_anterior)
             
           
@@ -227,9 +250,11 @@ class ejemplo_GUI(QMainWindow):
             dia_anterior=dia
             cont=1
             self.ui.grafica.canvas.draw()
-            enviar_temp_nube(temp)
-            enviar_hum_nube(hum)
-            enviar_bat_nube(bat)
+            
+            if self.ui.sincronizarcayenne.isChecked()==True:
+                enviar_temp_nube(temp)
+                enviar_hum_nube(hum)
+                enviar_bat_nube(bat)
             
             if MedidaAutomatica == True:
                 if self.ui.spinBox_humedad.value() == hum:
@@ -239,8 +264,10 @@ class ejemplo_GUI(QMainWindow):
                 else:
                     apagar()
                     enviar_bombilla_nube(0)
-                    
-            #funcion_guardar_datos_tabla(self)
+            
+            #os.system("prueba4")
+            #execfile("prueba4.py")
+            #exec(open("prueba4.py").read())
    
     def funcion_MedidaAuto(self):
         if self.ui.medidaautomatica.isChecked()==True:
@@ -249,6 +276,22 @@ class ejemplo_GUI(QMainWindow):
         else:
             self.ui.timer.stop()
             
+    def funcion_graficaindependiente(self):
+        print ("Hola")
+        fig=plt.figure()
+        ax1 = fig.add_subplot(111)
+        df = pd.read_csv("/home/pi/BLE-python/datos_grafica.csv")
+        df['Date'] = pd.to_datetime(df.Date, dayfirst=True)
+        ax1.clear()
+        ax1.plot(df['Date'], df['Temperatura'])
+        #my_plot = df.plot("Date", "Temperatura", kind="line", marker ='o')
+        plt.xticks(rotation=20)
+        #ani=animation.FuncAnimation(fig, animate, frames=1, interval=10, repeat=False)
+        #plt.show()
+        #time.sleep(100000)
+        hilo=threading.Thread(target=plt.show())
+        hilo.start()
+   
     #Para modificar la tabla       
     def funcion_borrartabla(self):
         self.ui.tabla_sensor.clearContents()
@@ -296,12 +339,14 @@ class ejemplo_GUI(QMainWindow):
     def funcion_encender (self):
         if valido_bombilla==True:
             encender()
-            enviar_bombilla_nube(254)
+            if self.ui.sincronizarcayenne.isChecked()==True:
+                enviar_bombilla_nube(254)
         
     def funcion_apagar (self):
         if valido_bombilla==True:
             apagar()
-            enviar_bombilla_nube(0)
+            if self.ui.sincronizarcayenne.isChecked()==True:
+                enviar_bombilla_nube(0)
         
     def funcion_brillo(self):
         if valido_bombilla==True:
@@ -311,14 +356,16 @@ class ejemplo_GUI(QMainWindow):
                 if int(self.ui.textEdit.toPlainText())==1:
                     self.ui.mensaje_brillo.setText("Número válido")
                     brillo(1)
-                    enviar_bombilla_nube(1)
+                    if self.ui.sincronizarcayenne.isChecked()==True:
+                        enviar_bombilla_nube(1)
             else:
                 bri=int(self.ui.textEdit.toPlainText())
                 #print (bri)
                 if bri>0 and bri<255:
                     self.ui.mensaje_brillo.setText("Número válido")
                     brillo(bri)
-                    enviar_bombilla_nube(bri)
+                    if self.ui.sincronizarcayenne.isChecked()==True:
+                        enviar_bombilla_nube(bri)
                 else: 
                     self.ui.mensaje_brillo.setText("Número no válido. Rango entre 1 y 254")
     
@@ -418,7 +465,8 @@ class Emparejar_ventanaBombilla (QDialog):
                 valido_bombilla=False
          
         GUI.funcion_texto_inicio_bombilla()
-            
+
+
 #MAIN           
 if __name__ == '__main__':
     app=QApplication(sys.argv) #Para abrir la aplicación
@@ -447,16 +495,7 @@ if __name__ == '__main__':
     GUI.funcion_texto_inicio()
     GUI.funcion_texto_inicio_bombilla()
     
-    #Meter los datos actuales en el fichero de los datos antiguos antes de borrarlo
-    file=open("/home/pi/BLE-python/Cargar_Datos_Antiguos.txt", "a")
-    with open('Datos_sensor.txt', 'r') as myfile:
-         datos_fichero=myfile.read()      
-    file.write(datos_fichero)
-    file.close()
-    open("/home/pi/BLE-python/Datos_sensor.txt", "w").close() #Para borrar los datos del sensor y empezar de nuevo
-    
     MedidaAutomatica=False
-    
     #Para pintar la gráfica uniendo sus puntos
     cont=0
     date_anterior=0
@@ -464,7 +503,6 @@ if __name__ == '__main__':
     hum_anterior=0
     dia_anterior=datetime.datetime.today().strftime('%d')
     
-    subir_dropbox()
     app.exec_()
     #sys.exit()
         

@@ -68,7 +68,7 @@ class Ui_MainWindow(object):
         self.botonInicio.setAutoExclusive(False)
         self.botonInicio.setObjectName("botonInicio")
         self.menu = QtWidgets.QToolBox(self.frame_menu)
-        self.menu.setGeometry(QtCore.QRect(0, 80, 191, 231))
+        self.menu.setGeometry(QtCore.QRect(0, 80, 191, 271))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -78,7 +78,7 @@ class Ui_MainWindow(object):
 "")
         self.menu.setObjectName("menu")
         self.Sensor1 = QtWidgets.QWidget()
-        self.Sensor1.setGeometry(QtCore.QRect(0, 0, 191, 123))
+        self.Sensor1.setGeometry(QtCore.QRect(0, 0, 191, 127))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -166,7 +166,7 @@ class Ui_MainWindow(object):
         self.boton1_4.raise_()
         self.menu.addItem(self.Sensor1, "")
         self.Sensor2 = QtWidgets.QWidget()
-        self.Sensor2.setGeometry(QtCore.QRect(0, 0, 191, 123))
+        self.Sensor2.setGeometry(QtCore.QRect(0, 0, 191, 127))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -193,7 +193,7 @@ class Ui_MainWindow(object):
         self.boton2_1.setObjectName("boton2_1")
         self.menu.addItem(self.Sensor2, "")
         self.ModoAuto = QtWidgets.QWidget()
-        self.ModoAuto.setGeometry(QtCore.QRect(0, 0, 191, 123))
+        self.ModoAuto.setGeometry(QtCore.QRect(0, 0, 191, 127))
         self.ModoAuto.setObjectName("ModoAuto")
         self.boton_auto = QtWidgets.QPushButton(self.ModoAuto)
         self.boton_auto.setGeometry(QtCore.QRect(0, 0, 171, 30))
@@ -209,6 +209,22 @@ class Ui_MainWindow(object):
         self.boton_auto.setIcon(icon5)
         self.boton_auto.setObjectName("boton_auto")
         self.menu.addItem(self.ModoAuto, "")
+        self.Subir_Nube_Conf = QtWidgets.QWidget()
+        self.Subir_Nube_Conf.setGeometry(QtCore.QRect(0, 0, 191, 127))
+        self.Subir_Nube_Conf.setObjectName("Subir_Nube_Conf")
+        self.boton_configuracion_nube = QtWidgets.QPushButton(self.Subir_Nube_Conf)
+        self.boton_configuracion_nube.setGeometry(QtCore.QRect(0, 0, 171, 30))
+        self.boton_configuracion_nube.setStyleSheet("QPushButton{\n"
+"    border-radus:Spx;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:rgb(146, 142, 255);\n"
+"}")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/cct/iconos/user_setting_settings_icon_148607.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_configuracion_nube.setIcon(icon6)
+        self.boton_configuracion_nube.setObjectName("boton_configuracion_nube")
+        self.menu.addItem(self.Subir_Nube_Conf, "")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
         self.stackedWidget.setGeometry(QtCore.QRect(170, 20, 730, 620))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -297,9 +313,9 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "font: 75 italic 14pt \"PibotoLt\";")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/cct/iconos/pair.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_emparejar.setIcon(icon6)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/cct/iconos/pair.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_emparejar.setIcon(icon7)
         self.boton_emparejar.setObjectName("boton_emparejar")
         self.frame_10 = QtWidgets.QFrame(self.frame_1)
         self.frame_10.setGeometry(QtCore.QRect(470, 310, 141, 51))
@@ -317,7 +333,7 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        self.boton_emparejar_bombilla.setIcon(icon6)
+        self.boton_emparejar_bombilla.setIcon(icon7)
         self.boton_emparejar_bombilla.setObjectName("boton_emparejar_bombilla")
         self.frame_11 = QtWidgets.QFrame(self.frame_1)
         self.frame_11.setGeometry(QtCore.QRect(270, 480, 191, 61))
@@ -341,9 +357,9 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/cct/iconos/bluetooth_111074.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_buscar.setIcon(icon7)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/cct/iconos/bluetooth_111074.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_buscar.setIcon(icon8)
         self.boton_buscar.setIconSize(QtCore.QSize(35, 35))
         self.boton_buscar.setObjectName("boton_buscar")
         self.stackedWidget.addWidget(self.home)
@@ -528,9 +544,9 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/cct/iconos/medida.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.botonMedida.setIcon(icon8)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/cct/iconos/medida.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.botonMedida.setIcon(icon9)
         self.botonMedida.setObjectName("botonMedida")
         self.stackedWidget.addWidget(self.sensor1_1)
         self.sensor1_2 = QtWidgets.QWidget()
@@ -551,6 +567,14 @@ class Ui_MainWindow(object):
         self.grafica = Grafica(self.sensor1_2)
         self.grafica.setGeometry(QtCore.QRect(40, 80, 641, 471))
         self.grafica.setObjectName("grafica")
+        self.mostrar_graf_temp = QtWidgets.QPushButton(self.sensor1_2)
+        self.mostrar_graf_temp.setGeometry(QtCore.QRect(185, 556, 108, 43))
+        self.mostrar_graf_temp.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.mostrar_graf_temp.setObjectName("mostrar_graf_temp")
+        self.mostrar_graf_hum = QtWidgets.QPushButton(self.sensor1_2)
+        self.mostrar_graf_hum.setGeometry(QtCore.QRect(71, 556, 108, 43))
+        self.mostrar_graf_hum.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.mostrar_graf_hum.setObjectName("mostrar_graf_hum")
         self.stackedWidget.addWidget(self.sensor1_2)
         self.sensor1_3 = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -602,9 +626,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar ultimo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_borrartabla_ultimo.setIcon(icon9)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar ultimo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_borrartabla_ultimo.setIcon(icon10)
         self.boton_borrartabla_ultimo.setObjectName("boton_borrartabla_ultimo")
         self.frame_14 = QtWidgets.QFrame(self.sensor1_3)
         self.frame_14.setGeometry(QtCore.QRect(450, 520, 120, 41))
@@ -622,9 +646,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar todo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_borrartabla_entera.setIcon(icon10)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/cct/iconos/borrar todo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_borrartabla_entera.setIcon(icon11)
         self.boton_borrartabla_entera.setObjectName("boton_borrartabla_entera")
         self.stackedWidget.addWidget(self.sensor1_3)
         self.sensor1_4 = QtWidgets.QWidget()
@@ -649,9 +673,9 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/cct/iconos/magnifying-glass.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_VisualizarDatos.setIcon(icon11)
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/cct/iconos/magnifying-glass.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_VisualizarDatos.setIcon(icon12)
         self.boton_VisualizarDatos.setObjectName("boton_VisualizarDatos")
         self.frame_7 = QtWidgets.QFrame(self.sensor1_4)
         self.frame_7.setGeometry(QtCore.QRect(30, 310, 181, 51))
@@ -668,7 +692,7 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        self.boton_BorrarDatos.setIcon(icon10)
+        self.boton_BorrarDatos.setIcon(icon11)
         self.boton_BorrarDatos.setObjectName("boton_BorrarDatos")
         self.frame_8 = QtWidgets.QFrame(self.sensor1_4)
         self.frame_8.setGeometry(QtCore.QRect(30, 230, 181, 51))
@@ -754,9 +778,9 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/cct/iconos/light-bulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_on.setIcon(icon12)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/cct/iconos/light-bulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_on.setIcon(icon13)
         self.boton_on.setObjectName("boton_on")
         self.frame_16 = QtWidgets.QFrame(self.sensor2_1)
         self.frame_16.setGeometry(QtCore.QRect(470, 180, 111, 71))
@@ -773,7 +797,7 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        self.boton_off.setIcon(icon12)
+        self.boton_off.setIcon(icon13)
         self.boton_off.setObjectName("boton_off")
         self.frame_17 = QtWidgets.QFrame(self.sensor2_1)
         self.frame_17.setGeometry(QtCore.QRect(560, 350, 101, 51))
@@ -790,9 +814,9 @@ class Ui_MainWindow(object):
 "    background-color:rgb(146, 142, 255);\n"
 "}\n"
 "")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/cct/iconos/aplicar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_brillo.setIcon(icon13)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/cct/iconos/aplicar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_brillo.setIcon(icon14)
         self.boton_brillo.setObjectName("boton_brillo")
         self.stackedWidget.addWidget(self.sensor2_1)
         self.Pagina_Auto = QtWidgets.QWidget()
@@ -853,6 +877,35 @@ class Ui_MainWindow(object):
 "")
         self.label_15.setObjectName("label_15")
         self.stackedWidget.addWidget(self.Pagina_Auto)
+        self.Pagina_Nube = QtWidgets.QWidget()
+        self.Pagina_Nube.setObjectName("Pagina_Nube")
+        self.subirdropbox = QtWidgets.QCheckBox(self.Pagina_Nube)
+        self.subirdropbox.setGeometry(QtCore.QRect(80, 430, 191, 27))
+        self.subirdropbox.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.subirdropbox.setObjectName("subirdropbox")
+        self.sincronizarcayenne = QtWidgets.QCheckBox(self.Pagina_Nube)
+        self.sincronizarcayenne.setGeometry(QtCore.QRect(400, 430, 291, 27))
+        self.sincronizarcayenne.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.sincronizarcayenne.setObjectName("sincronizarcayenne")
+        self.frame_18 = QtWidgets.QFrame(self.Pagina_Nube)
+        self.frame_18.setGeometry(QtCore.QRect(50, 120, 251, 241))
+        self.frame_18.setStyleSheet("border-image: url(:/cct/iconos/1490889640-dropbox_82530.png);")
+        self.frame_18.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_18.setObjectName("frame_18")
+        self.frame_19 = QtWidgets.QFrame(self.Pagina_Nube)
+        self.frame_19.setGeometry(QtCore.QRect(430, 130, 231, 231))
+        self.frame_19.setStyleSheet("border-image: url(:/cct/iconos/cayenne.png);")
+        self.frame_19.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_19.setObjectName("frame_19")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.Pagina_Nube)
+        self.lineEdit_2.setGeometry(QtCore.QRect(40, 530, 651, 32))
+        self.lineEdit_2.setStyleSheet("font: 75 12pt \"PibotoLt\";\n"
+"color: rgb(170, 170, 255);\n"
+"")
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.stackedWidget.addWidget(self.Pagina_Nube)
         self.barra_superior = QtWidgets.QFrame(self.centralwidget)
         self.barra_superior.setGeometry(QtCore.QRect(170, 0, 731, 21))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -890,7 +943,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.menu.setCurrentIndex(0)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -907,6 +960,8 @@ class Ui_MainWindow(object):
         self.menu.setItemText(self.menu.indexOf(self.Sensor2), _translate("MainWindow", "Bombilla Philips"))
         self.boton_auto.setText(_translate("MainWindow", "Modo Auto"))
         self.menu.setItemText(self.menu.indexOf(self.ModoAuto), _translate("MainWindow", "Modo Automático"))
+        self.boton_configuracion_nube.setText(_translate("MainWindow", "Configuración"))
+        self.menu.setItemText(self.menu.indexOf(self.Subir_Nube_Conf), _translate("MainWindow", "Subir Datos Nube"))
         self.nombre_sensor1.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         self.nombre_sensor2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Philips Hue Bombilla E27</span></p></body></html>"))
         self.boton_emparejar.setText(_translate("MainWindow", "Emparejar"))
@@ -922,6 +977,11 @@ class Ui_MainWindow(object):
         self.botonMedida.setText(_translate("MainWindow", "Tomar\n"
 " medida"))
         self.label_6.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
+        self.mostrar_graf_temp.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"center\">Mostrar gráfica</p><p align=\"center\">temperatura</p></body></html>"))
+        self.mostrar_graf_temp.setText(_translate("MainWindow", "Mostrar gráfica \n"
+" temperatura "))
+        self.mostrar_graf_hum.setText(_translate("MainWindow", "Mostrar gráfica \n"
+"humedad"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Xiaomi LYWSD03MMC</span></p></body></html>"))
         item = self.tabla_sensor.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Fecha"))
@@ -954,6 +1014,9 @@ class Ui_MainWindow(object):
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ffffff;\">Modo Automático</span></p></body></html>"))
         self.label_14.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.label_15.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
+        self.subirdropbox.setText(_translate("MainWindow", "Subir datos a Dropbox"))
+        self.sincronizarcayenne.setText(_translate("MainWindow", "Sincronizar con Cayenne MyDevices"))
+        self.lineEdit_2.setText(_translate("MainWindow", "Nota: para usar estas opciones hay que seguir el manual, disponible en el fichero README"))
 
 from grafica import Grafica
 import icons_rc
