@@ -41,6 +41,8 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 -Crear un nuevo proyecto con el nombre cayenne, añadir temperatura, humedad y batería para actualizar los datos
 
 # Para la subida de datos a la nube Dropbox:
+-Instalar la libreria de dropbox: pip install dropbox
+
 -Cuenta en Dropbox y creación de la app en el siguiente enlace:https://www.dropbox.com/developers
 
 -Dar todos los permisos de lectura y escritura a la aplicación:
@@ -50,5 +52,22 @@ Para el funcionamiento de este proyecto se necesitan los siguietnes requisitos:
 	-En el apartado OAuth 2 en el botón Generate
 
 -Una vez este lista la aplicación se crea un fichero en esta carpeta de dropbox, con el mismo nombre y extensión cuyo nombre de fichero se quiere subir.
+
+# Para la subida de datos a la nube Kaaiot:
+-pip install paho-mqtt
+
+-Cuenta en Kaaiot
+
+-Conectar la raspberry en tu nube de kaaiot mediante la opción add devices
+
+-Al agregar el nuevo dispositivo
+	-Introduciendo un token que deberá guardar
+	-Ver el nombre de la versión de la app y guardarlo también
+
+-En el fichero kaaiot.py cambiar las dos variables comentadas arriba (token y versión) por las suyas
+
+-Editar la configuración de la aplicación para el servicio Endpoint Time Series (EPTS) 
+	-En el menu de la izquierda opción Aplications->en nuestro dispositivo 
+	-Habilitar la opción autoextract de EPTS
 
 

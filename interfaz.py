@@ -19,6 +19,7 @@ from Dropbox import subir_dropbox
 import threading
 import matplotlib.pyplot as plt
 import pandas as pd
+from kaaiot import *
 
 class ejemplo_GUI(QMainWindow):
     def __init__(self):
@@ -102,8 +103,7 @@ class ejemplo_GUI(QMainWindow):
         #self.ejes1.grid()
         #self.ejes2.grid()
         #GRAFICA XIAOMO INDEPENDIENTE
-        self.ui.mostrar_graf_temp.clicked.connect(self.funcion_graficaindependiente)
-        self.ui.mostrar_graf_hum.clicked.connect(self.funcion_graficaindependiente)
+        self.ui.mostrar_mas_precision.clicked.connect(self.funcion_graficaindependiente)
         #SENSOR XIAOMI CARGAR DATOS
         self.ui.boton_CargarDatos.clicked.connect(self.funcion_CargarDatosEnTabla)
         self.ui.boton_BorrarDatos.clicked.connect(self.funcion_BorrarDatos)
@@ -264,7 +264,9 @@ class ejemplo_GUI(QMainWindow):
                 else:
                     apagar()
                     enviar_bombilla_nube(0)
-            
+                    
+            if self.ui.sincronizarkaaiot.isChecked()==True:
+                kaacloud(temp,hum,bat,vol)
             #os.system("prueba4")
             #execfile("prueba4.py")
             #exec(open("prueba4.py").read())

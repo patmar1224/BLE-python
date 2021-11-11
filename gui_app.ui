@@ -1206,42 +1206,50 @@ QPushButton:hover{
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="mostrar_graf_temp">
+     <widget class="QFrame" name="frame_21">
       <property name="geometry">
        <rect>
-        <x>185</x>
-        <y>556</y>
-        <width>108</width>
-        <height>43</height>
-       </rect>
-      </property>
-      <property name="whatsThis">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Mostrar gráfica&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;temperatura&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Mostrar gráfica 
- temperatura </string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="mostrar_graf_hum">
-      <property name="geometry">
-       <rect>
-        <x>71</x>
-        <y>556</y>
-        <width>108</width>
-        <height>43</height>
+        <x>50</x>
+        <y>560</y>
+        <width>231</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
-      <property name="text">
-       <string>Mostrar gráfica 
-humedad</string>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="mostrar_mas_precision">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>241</width>
+         <height>43</height>
+        </rect>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Mostrar gráfica&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;temperatura&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-radus:Spx;
+}
+QPushButton:hover{
+	background-color:rgb(146, 142, 255);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Mostrar gráficas con mayor 
+precisión</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="sensor1_3">
@@ -1996,45 +2004,13 @@ border-image: url(:/cct/iconos/light-bulb.png);
      </widget>
     </widget>
     <widget class="QWidget" name="Pagina_Nube">
-     <widget class="QCheckBox" name="subirdropbox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>430</y>
-        <width>191</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Subir datos a Dropbox</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="sincronizarcayenne">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>430</y>
-        <width>291</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Sincronizar con Cayenne MyDevices</string>
-      </property>
-     </widget>
      <widget class="QFrame" name="frame_18">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>120</y>
-        <width>251</width>
-        <height>241</height>
+        <x>470</x>
+        <y>30</y>
+        <width>171</width>
+        <height>151</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2050,10 +2026,10 @@ border-image: url(:/cct/iconos/light-bulb.png);
      <widget class="QFrame" name="frame_19">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>130</y>
-        <width>231</width>
-        <height>231</height>
+        <x>470</x>
+        <y>370</y>
+        <width>181</width>
+        <height>151</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2070,7 +2046,7 @@ border-image: url(:/cct/iconos/light-bulb.png);
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>530</y>
+        <y>560</y>
         <width>651</width>
         <height>32</height>
        </rect>
@@ -2083,6 +2059,68 @@ color: rgb(170, 170, 255);
       <property name="text">
        <string>Nota: para usar estas opciones hay que seguir el manual, disponible en el fichero README</string>
       </property>
+     </widget>
+     <widget class="QFrame" name="frame_20">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>210</y>
+        <width>181</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/cct/iconos/kaaiotcloud.png);
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>-30</y>
+        <width>283</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QCheckBox" name="subirdropbox">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(170, 170, 255);</string>
+         </property>
+         <property name="text">
+          <string>Subir datos a Dropbox</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="sincronizarkaaiot">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(170, 170, 255);</string>
+         </property>
+         <property name="text">
+          <string>Sincronizar kaaiot</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="sincronizarcayenne">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(170, 170, 255);</string>
+         </property>
+         <property name="text">
+          <string>Sincronizar con Cayenne MyDevices</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
